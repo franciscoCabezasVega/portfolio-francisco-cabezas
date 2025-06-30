@@ -233,6 +233,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  const recaptchaResponse = grecaptcha.getResponse();
+  if (!recaptchaResponse) {
+    alert('Please complete the reCAPTCHA.');
+    return false;
+  }
+
   if (!valid) {
     e.preventDefault();
     sendBtn.disabled = true;
