@@ -1039,3 +1039,8 @@ footer::before {
 .modal-toggle:checked + .modal {
   display: flex;
 }
+
+/* Mejora el espacio entre el captcha y el botón de envío */
+.g-recaptcha {
+  margin-bottom: 22px;
+}

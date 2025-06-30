@@ -235,6 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const recaptchaResponse = grecaptcha.getResponse();
   if (!recaptchaResponse) {
+    e.preventDefault();
     alert('Please complete the reCAPTCHA.');
     return false;
   }
