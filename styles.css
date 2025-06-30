@@ -937,15 +937,16 @@ footer::before {
 .modal-content {
   background: #222e3c;
   color: #fff;
-  padding: 36px 28px 28px 28px;
+  padding: 48px 38px 38px 38px;
   border-radius: 14px;
-  max-width: 440px;
-  width: 96vw;
+  max-width: 760px;
+  width: 99vw;
+  min-height: 340px;
   position: relative;
   box-shadow: 0 8px 32px rgba(0,0,0,0.28);
   text-align: center;
-  font-size: 1.08rem;
-  line-height: 1.7;
+  font-size: 1.12rem;
+  line-height: 1.8;
   animation: modalFadeIn 0.25s;
 }
 
@@ -955,9 +956,12 @@ footer::before {
 }
 
 .modal-content ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 32px;
   text-align: left;
-  margin: 18px auto 0 auto;
-  max-width: 370px;
+  margin: 24px auto 0 auto;
+  max-width: 660px;
   padding-left: 0;
   list-style: none;
 }
@@ -971,6 +975,14 @@ footer::before {
   font-size: 1.01em;
   color: #e3eaf3;
   transition: background 0.18s;
+}
+
+/* Evita que la última opción de la segunda columna tenga un tamaño diferente */
+.modal-content ul li:nth-last-child(1):nth-child(even) {
+  grid-column: 2;
+  grid-row: auto / span 1;
+  margin-bottom: 13px; /* igual que los demás */
+  min-height: 0; /* elimina posibles diferencias de altura */
 }
 
 .modal-content ul li:last-child {
@@ -997,7 +1009,13 @@ footer::before {
     font-size: 0.98rem;
   }
   .modal-content ul {
+    display: block;
+    grid-template-columns: none;
     max-width: 98vw;
+  }
+  .modal-content ul li {
+    width: 100%;
+    display: block;
   }
   .modal-content ul li {
     padding-left: 32px;
