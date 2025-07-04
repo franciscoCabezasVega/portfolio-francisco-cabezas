@@ -1,789 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Francisco Cabezas - QA Engineer Portfolio</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧳</text></svg>">
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  </head>
-  <body>
-    <!-- Header -->
-    <header>
-      <div class="container header-container">
-        <div class="logo">Q<span>A</span></div>
-        <nav>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <div class="mobile-menu">
-          <i class="fas fa-bars"></i>
-        </div>
-      </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1>Francisco <span>Cabezas</span></h1>
-          <h3>QA Engineer & Automation Specialist</h3>
-          <p>
-            5+ years of experience in automation, functional testing, and
-            continuous quality improvement
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="page_title">Francisco Cabezas - QA Engineer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧳</text></svg>">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">Q<span>A</span></div>
+      <nav>
+        <ul>
+          <li><a href="#about" data-i18n="about">About</a></li>
+          <li><a href="#skills" data-i18n="skills">Skills</a></li>
+          <li><a href="#experience" data-i18n="experience">Experience</a></li>
+          <li><a href="#projects" data-i18n="projects">Projects</a></li>
+          <li><a href="#certifications" data-i18n="certifications">Certifications</a></li>
+          <li><a href="#achievements" data-i18n="achievements">Achievements</a></li>
+          <li><a href="#contact" data-i18n="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+      <select id="lang-switcher">
+        <option value="en" data-i18n="lang_en">English</option>
+        <option value="es" data-i18n="lang_es">Spanish</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1><span>Francisco</span> <span>Cabezas</span></h1>
+        <h3 data-i18n="hero_title">QA Engineer & Automation Specialist</h3>
+        <p data-i18n="hero_experience">
+          5+ years of experience in automation, functional testing, and
+          continuous quality improvement
+        </p>
+        <div class="hero-quote" data-i18n="hero_quote">
+          "Driving quality through smart automation, attention to detail, and
+          a passion for empowering everyday delivery."
+        </div>
+        <a href="#contact" class="btn" data-i18n="get_in_touch">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="text-center" data-i18n="professional_profile">Professional Profile</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p data-i18n="about_1">
+            Highly skilled QA Engineer with over 5 years of experience in
+            automation, functional testing, and continuous quality
+            improvement. Specialized in defect detection, test design, and
+            process optimization.
           </p>
-          <div class="hero-quote">
-            "Driving quality through smart automation, attention to detail, and
-            a passion for empowering everyday delivery."
-          </div>
-          <a href="#contact" class="btn">Get In Touch</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-      <div class="container">
-        <h2 class="text-center">Professional Profile</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <p>
-              Highly skilled QA Engineer with over 5 years of experience in
-              automation, functional testing, and continuous quality
-              improvement. Specialized in defect detection, test design, and
-              process optimization.
-            </p>
-            <p>
-              Passionate about technology and continuous learning with a focus
-              on delivering reliable products. Proven ability to implement
-              robust testing strategies that significantly reduce production
-              errors and improve efficiency.
-            </p>
-            <p>
-              Experienced in training teams on QA best practices, automation
-              techniques, and ISTQB methodologies to drive overall quality
-              maturity.
-            </p>
-            <div class="contact-info" style="margin-top: 30px">
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <div>frank_vega25@hotmail.com</div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <i class="fab fa-linkedin"></i>
-                </div>
-                <div>
-                  <a
-                    href="https://www.linkedin.com/in/franciscoantoniocabezasvega/"
-                    target="_blank"
-                    >franciscoantoniocabezasvega
-                  </a>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <i class="fab fa-github"></i>
-                </div>
-                <div>
-                  <a
-                    href="https://github.com/franciscoCabezasVega"
-                    target="_blank"
-                    >franciscoCabezasVega</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="about-image">
-            <img
-              src="assets\28EE70DC-5471-4C1E-9234-BF74BECE5E42.JPG"
-              alt="Francisco Cabezas"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-      <div class="container">
-        <h2 class="text-center mb-30">Technical Skills</h2>
-        <div class="skills-grid">
-          <!-- Programming -->
-          <div class="skill-category">
-            <h3><i class="fas fa-code"></i> Programming</h3>
-            <div class="skill-item">
-              <span>TypeScript</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>JavaScript</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Python</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Google Colab</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Visual Studio Code</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Java</span>
-              <span class="skill-level level-intermediate">Intermediate</span>
-            </div>
-            <div class="skill-item">
-              <span>SQL</span>
-              <span class="skill-level level-intermediate">Intermediate</span>
-            </div>
-          </div>
-
-          <!-- Cloud Platforms - CI/CD -->
-          <div class="skill-category">
-            <h3><i class="fas fa-cloud"></i> Cloud Platforms - CI/CD</h3>
-            <div class="skill-item">
-              <span>Google Cloud Platform</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Amazon Web Services</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Git hub</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Git hub actions</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Git</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Bitbucket</span>
-              <span class="skill-level level-intermediate">Intermediate</span>
-            </div>
-            <div class="skill-item">
-              <span>Jenkins</span>
-              <span class="skill-level level-intermediate">Intermediate</span>
-            </div>
-          </div>
-
-          <!-- Database Managers -->
-          <div class="skill-category">
-            <h3><i class="fas fa-database"></i> Databases</h3>
-            <div class="skill-item">
-              <span>MongoDB</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>PostgreSQL</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>MySQL</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>DBeaver</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>SQL Management Studio</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-          </div>
-
-          <!-- Testing Tools -->
-          <div class="skill-category">
-            <h3><i class="fas fa-tools"></i> Testing Tools</h3>
-            <div class="skill-item">
-              <span>JMeter</span>
-              <span class="skill-level level-expert">Expert</span>
-            </div>
-            <div class="skill-item">
-              <span>Postman</span>
-              <span class="skill-level level-expert">Expert</span>
-            </div>
-            <div class="skill-item">
-              <span>Insomnia</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Rest Assured</span>
-              <span class="skill-level level-intermediate">Intermediate</span>
-            </div>
-            <div class="skill-item">
-              <span>Soap UI</span>
-              <span class="skill-level level-intermediate">Intermediate</span>
-            </div>
-            <div class="skill-item">
-              <span>Jest</span>
-              <span class="skill-level level-intermediate">Intermediate</span>
-            </div>
-          </div>
-
-          <!-- Test Management -->
-          <div class="skill-category">
-            <h3><i class="fas fa-vial"></i> Test Management</h3>
-            <div class="skill-item">
-              <span>Notion</span>
-              <span class="skill-level level-expert">Expert</span>
-            </div>
-            <div class="skill-item">
-              <span>Trello</span>
-              <span class="skill-level level-expert">Expert</span>
-            </div>
-            <div class="skill-item">
-              <span>ClickUp</span>
-              <span class="skill-level level-expert">Expert</span>
-            </div>
-            <div class="skill-item">
-              <span>Xray</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>JIRA</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-          </div>
-
-          <!-- Performance tools -->
-          <div class="skill-category">
-            <h3><i class="fas fa-tachometer"></i> Performance tools</h3>
-            <div class="skill-item">
-              <span>Postman Performance</span>
-              <span class="skill-level level-expert">Expert</span>
-            </div>
-            <div class="skill-item">
-              <span>JMeter</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>BlazeMeter</span>
-              <span class="skill-level level-intermediate">Intermediate</span>
-            </div>
-          </div>
-
-          <!-- Automation framework -->
-          <div class="skill-category">
-            <h3><i class="fas fa-robot"></i> Automation framework</h3>
-            <div class="skill-item">
-              <span>Playwright</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Cypress</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>Selenium WebDriver</span>
-              <span class="skill-level level-intermediate">Intermediate</span>
-            </div>
-          </div>
-
-          <!-- Methodologies -->
-          <div class="skill-category">
-            <h3><i class="fas fa-project-diagram"></i> Methodologies</h3>
-            <div class="skill-item">
-              <span>Agile</span>
-              <span class="skill-level level-expert">Expert</span>
-            </div>
-            <div class="skill-item">
-              <span>Scrum</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>BDD</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-            <div class="skill-item">
-              <span>TDD</span>
-              <span class="skill-level level-advanced">Advanced</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testing Experience Section -->
-    <section id="testing-experience" class="skills">
-      <div class="container">
-        <h2 class="text-center mb-30">Testing Experience</h2>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h3><i class="fas fa-check-square"></i> Functional Tests</h3>
-            <div class="skill-item">
-              <span>
-                Validates that the software performs its intended functions
-                correctly according to requirements.
-              </span>
-            </div>
-            <div class="center-btn">
-              <label for="modal-functional" class="btn btn-modal">
-                See Testing Technique
-              </label>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-cogs"></i> Non-functional Tests</h3>
-            <div class="skill-item">
-              <span
-                >Evaluates aspects such as performance, usability, reliability,
-                and security of the application.</span
-              >
-            </div>
-            <div class="center-btn">
-              <label for="modal-nonfunctional" class="btn btn-modal">
-                See Testing Technique
-              </label>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-th-large"></i> Black Box Testing</h3>
-            <div class="skill-item">
-              <span
-                >Focuses on testing the application's functionality without
-                knowledge of internal code or structure.</span
-              >
-            </div>
-            <div class="center-btn">
-              <label for="modal-blackbox" class="btn btn-modal">
-                See Testing Technique
-              </label>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-code-branch"></i> White Box Testing</h3>
-            <div class="skill-item">
-              <span
-                >Involves testing internal structures or workings of an
-                application, such as code, branches, and paths.</span
-              >
-            </div>
-            <div class="center-btn">
-              <label for="modal-whitebox" class="btn btn-modal">
-                See Testing Technique
-              </label>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-file-alt"></i> Test Documentation</h3>
-            <div class="skill-item">
-              <span
-                >Creation and maintenance of test plans, cases, scripts, and
-                reports to ensure traceability and coverage.</span
-              >
-            </div>
-            <div class="center-btn">
-              <label for="modal-documentation" class="btn btn-modal">
-                See Testing Technique
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-      <div class="container">
-        <h2 class="text-center mb-30">Work Experience</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-content">
-              <span class="timeline-date">February 2023 - Present</span>
-              <h3>QA Analyst</h3>
-              <h4>Jelou <span class="location">| Ecuador</span></h4>
-              <h5>Responsibilities and Achievements</h5>
-              <ul>
-                <li>
-                  <strong>Functional and Regression Testing:</strong>
-                  Design and execution of manual and automated regression tests
-                  to ensure software stability.
-                </li>
-                <li>
-                  <strong>API and Performance Testing:</strong>
-                  Validation of system interactions using Postman. Performance
-                  evaluation under load using JMeter.
-                </li>
-                <li>
-                  <strong>Test Automation and Data Management:</strong>
-                  Development of automated test scripts with Playwright and
-                  Cypress (TypeScript). Test data management with MongoDB.
-                </li>
-                <li>
-                  <strong>CI/CD and Containerization:</strong>
-                  Implementation of CI/CD pipelines. Use of Docker to optimize
-                  deployment workflows.
-                </li>
-              </ul>
-              <div class="project-tags">
-                <span class="project-tag">Playwright</span>
-                <span class="project-tag">Cypress</span>
-                <span class="project-tag">TypeScript</span>
-                <span class="project-tag">Postman</span>
-                <span class="project-tag">JMeter</span>
-                <span class="project-tag">MongoDB</span>
-                <span class="project-tag">CI/CD</span>
-                <span class="project-tag">Docker</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-content">
-              <span class="timeline-date">May 2022 - November 2022</span>
-              <h3>QA Engineer</h3>
-              <h4>Houm <span class="location">| Chile</span></h4>
-              <h5>Responsibilities and Achievements</h5>
-              <ul>
-                <li>
-                  <strong>Regression and API Testing:</strong>
-                  Analyzed business needs to develop regression test suites.
-                  Executed API tests to ensure system performance.
-                </li>
-                <li>
-                  <strong>Test Data and Real-World Simulation:</strong>
-                  Designed and generated test data to accurately replicate
-                  real-world conditions. Improved testing accuracy using
-                  representative data.
-                </li>
-                <li>
-                  <strong>Test Automation and Scripting:</strong>
-                  Created and maintained automated test scripts with Cypress
-                  (JavaScript). Optimized the efficiency and reliability of
-                  automated tests.
-                </li>
-                <li>
-                  <strong>CI/CD Integration:</strong>
-                  Utilized CI/CD pipelines to integrate test automation into the
-                  development cycle.
-                </li>
-              </ul>
-              <div class="project-tags">
-                <span class="project-tag">Cypress</span>
-                <span class="project-tag">JavaScript</span>
-                <span class="project-tag">API Testing</span>
-                <span class="project-tag">Regression Testing</span>
-                <span class="project-tag">Test Data</span>
-                <span class="project-tag">CI/CD</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-content">
-              <span class="timeline-date">January 2020 - May 2022</span>
-              <h3>Quality Assurance</h3>
-              <h4>
-                ZABUD Technologies <span class="location">| Cartagena</span>
-              </h4>
-              <h5>Responsibilities and Achievements</h5>
-              <ul>
-                <li>
-                  <strong>Regression and Functional Testing:</strong>
-                  Developed regression test suites to ensure application
-                  stability. Executed manual tests for early defect detection.
-                </li>
-                <li>
-                  <strong>API and Database Testing:</strong>
-                  Validated APIs and system integrations. Executed database
-                  tests using SQL Server.
-                </li>
-                <li>
-                  <strong>Test Case Design and Traceability:</strong>
-                  Created and maintained test cases and traceability matrix.
-                  Generated custom test data to improve coverage.
-                </li>
-                <li>
-                  <strong>Test Automation:</strong>
-                  Developed automation frameworks using Java. Implemented UI
-                  tests with Selenium. Used CI/CD pipelines for executing
-                  automated tests.
-                </li>
-                <li>
-                  <strong>Performance Testing and Issue Tracking:</strong>
-                  Conducted performance tests with JMeter. Managed and tracked
-                  defects with Jira.
-                </li>
-              </ul>
-              <div class="project-tags">
-                <span class="project-tag">Java</span>
-                <span class="project-tag">Selenium</span>
-                <span class="project-tag">JMeter</span>
-                <span class="project-tag">Jira</span>
-                <span class="project-tag">SQL Server</span>
-                <span class="project-tag">API Testing</span>
-                <span class="project-tag">CI/CD</span>
-                <span class="project-tag">Automation Frameworks</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-      <div class="container">
-        <h2 class="text-center mb-30">Featured Projects</h2>
-        <div class="projects-grid">
-          <div class="project-card">
-            <div class="project-image" style="background: #3498db">
-              <i class="fab fa-whatsapp"></i>
-            </div>
-            <div class="project-content">
-              <h3>WhatsApp Tester</h3>
-              <p>
-                Automated WhatsApp chatbot validation system that sends messages
-                and monitors responses.
-              </p>
-              <ul>
-                <li>
-                  Developed script to automate message sending and response
-                  monitoring
-                </li>
-                <li>Generated automatic reports on activity and errors</li>
-                <li>Integrated with Slack for real-time notifications</li>
-              </ul>
-              <div class="project-tags">
-                <span class="project-tag">Automation</span>
-                <span class="project-tag">Python</span>
-                <span class="project-tag">Slack API</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-image" style="background: #2ecc71">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <div class="project-content">
-              <h3>KPI Reports Automation</h3>
-              <p>
-                Automated generation of performance indicators reports to
-                optimize decision-making.
-              </p>
-              <ul>
-                <li>Automated KPI reports using Python</li>
-                <li>Extracted data from ClickUp API</li>
-                <li>Generated reports in Google Colab ready to share</li>
-              </ul>
-              <div class="project-tags">
-                <span class="project-tag">Python</span>
-                <span class="project-tag">Data Analysis</span>
-                <span class="project-tag">Google Colab</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-image" style="background: #e74c3c">
-              <i class="fas fa-home"></i>
-            </div>
-            <div class="project-content">
-              <h3>Lead Verifier</h3>
-              <p>
-                Validation system for forms and contact flow on real estate
-                portals.
-              </p>
-              <ul>
-                <li>
-                  Developed scripts with Cypress to simulate user behavior
-                </li>
-                <li>Automated navigation between property listings</li>
-                <li>Tested contact forms to ensure error-free lead capture</li>
-              </ul>
-              <div class="project-tags">
-                <span class="project-tag">Cypress</span>
-                <span class="project-tag">Automation</span>
-                <span class="project-tag">E2E Testing</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-      <div class="container">
-        <h2 class="text-center mb-30">Certifications</h2>
-        <div class="certs-container">
-          <div class="cert-card">
-            <span class="cert-type">Technical</span>
-            <h3>ISTQB® Certified Tester - Foundation Level</h3>
-            <p>
-              International certification in software quality assurance covering
-              fundamental testing concepts and practices.
-            </p>
-          </div>
-
-          <div class="cert-card">
-            <span class="cert-type">Cloud</span>
-            <h3>Google Cloud Platform Certifications</h3>
-            <ul>
-              <li>From Data to Insights with Google Cloud Platform</li>
-              <li>Architecting with Google Compute Engine</li>
-            </ul>
-            <p>
-              Designing scalable solutions and using BigQuery, Data Studio, and
-              data analysis tools.
-            </p>
-          </div>
-
-          <div class="cert-card">
-            <span class="cert-type">Agile</span>
-            <h3>SCRUM Foundation Professional Certificate (SFPC)</h3>
-            <p>
-              Certification covering principles and fundamentals of the SCRUM
-              methodology for agile development.
-            </p>
-          </div>
-
-          <div class="cert-card">
-            <span class="cert-type">AI</span>
-            <h3>Artificial Intelligence - MinTIC</h3>
-            <p>
-              Fundamentals and practical applications of AI in the public
-              sector.
-            </p>
-          </div>
-
-          <div class="cert-card">
-            <span class="cert-type">Language</span>
-            <h3>EF SET Certificate™</h3>
-            <p>
-              English proficiency evaluation based on CEFR standards (B2 level).
-            </p>
-          </div>
-
-          <div class="cert-card">
-            <span class="cert-type">Cloud Labs</span>
-            <h3>Qwiklabs Certifications</h3>
-            <p>Hands-on labs in Google Cloud and DevOps technologies.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section id="achievements" class="achievements">
-      <div class="container">
-        <h2 class="text-center mb-30">Professional Achievements</h2>
-
-        <div class="achievement-card">
-          <div class="achievement-icon">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <div class="achievement-content">
-            <span class="company">Jelou</span>
-            <h3>Reduction of Defects in Production</h3>
-            <p>
-              Managed to reduce
-              <span class="highlight">production errors by 40%</span> thanks to
-              the implementation of more robust testing strategies and early
-              reviews in the development cycle.
-            </p>
-          </div>
-        </div>
-
-        <div class="achievement-card">
-          <div class="achievement-icon">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <div class="achievement-content">
-            <span class="company">Jelou</span>
-            <h3>Training and Capacity Building</h3>
-            <p>
-              Led <span class="highlight">internal training</span> on QA best
-              practices, driving the team's maturity in areas such as
-              automation, test case design, and ISTQB techniques.
-            </p>
-          </div>
-        </div>
-
-        <div class="achievement-card">
-          <div class="achievement-icon">
-            <i class="fas fa-trophy"></i>
-          </div>
-          <div class="achievement-content">
-            <span class="company">Jelou</span>
-            <h3>Recognition for Automating KPIs</h3>
-            <p>
-              Publicly praised during a company meeting for the initiative to
-              automate KPI reports through the ClickUp API and Google Colab.
-              This automation allowed management to make decisions faster and
-              with more confidence, being recognized as a
-              <span class="highlight">model of efficiency</span> within the
-              organization.
-            </p>
-          </div>
-        </div>
-
-        <div class="achievement-card">
-          <div class="achievement-icon">
-            <i class="fas fa-robot"></i>
-          </div>
-          <div class="achievement-content">
-            <span class="company">ZABUD Technologies</span>
-            <h3>QA Automation Implementation</h3>
-            <p>
-              Designed and implemented
-              <span class="highlight">automated QA processes</span> that
-              optimized repetitive tasks and freed up the team's time to focus
-              on exploratory testing.
-            </p>
-          </div>
-        </div>
-
-        <div class="achievement-card">
-          <div class="achievement-icon">
-            <i class="fas fa-bolt"></i>
-          </div>
-          <div class="achievement-content">
-            <span class="company">Houm</span>
-            <h3>Improvement in Testing Efficiency</h3>
-            <p>
-              Improved
-              <span class="highlight">test cycle efficiency by 50%</span>,
-              reducing validation times and accelerating the delivery of stable
-              versions to the development team.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2 class="text-center mb-30">Get In Touch</h2>
-        <div class="contact-container">
+          <p data-i18n="about_2">
+            Passionate about technology and continuous learning with a focus
+            on delivering reliable products. Proven ability to implement
+            robust testing strategies that significantly reduce production
+            errors and improve efficiency.
+          </p>
+          <p data-i18n="about_3">
+            Experienced in training teams on QA best practices, automation
+            techniques, and ISTQB methodologies to drive overall quality
+            maturity.
+          </p>
           <div class="contact-info">
-            <h3>Contact Information</h3>
             <div class="contact-item">
               <div class="contact-icon">
                 <i class="fas fa-envelope"></i>
@@ -795,11 +92,9 @@
                 <i class="fab fa-linkedin"></i>
               </div>
               <div>
-                <a
-                  href="https://www.linkedin.com/in/franciscoantoniocabezasvega/"
-                  target="_blank"
-                  >franciscoantoniocabezasvega</a
-                >
+                <a href="https://www.linkedin.com/in/franciscoantoniocabezasvega/"
+                  target="_blank">franciscoantoniocabezasvega
+                </a>
               </div>
             </div>
             <div class="contact-item">
@@ -807,168 +102,837 @@
                 <i class="fab fa-github"></i>
               </div>
               <div>
-                <a
-                  href="https://github.com/franciscoCabezasVega"
-                  target="_blank"
-                  >franciscoCabezasVega</a
-                >
+                <a href="https://github.com/franciscoCabezasVega" target="_blank">franciscoCabezasVega</a>
               </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div>Cartagena, Colombia</div>
             </div>
           </div>
-          <div class="contact-form">
-            <form id="contact-form">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required />
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" />
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                ></textarea>
-              </div>
-              <div class="g-recaptcha" data-sitekey="6LdPP3IrAAAAANNJUw3OhGK-Tbym1JyIAgzIOOPm"></div>
-              <button type="submit" class="btn" id="send-btn" disabled>
-                Send Message
-              </button>
-            </form>
+        </div>
+        <div class="about-image">
+          <img src="assets\28EE70DC-5471-4C1E-9234-BF74BECE5E42.JPG" alt="Francisco Cabezas" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2 class="text-center mb-30" data-i18n="technical_skills">Technical Skills</h2>
+      <div class="skills-grid">
+        <!-- Programming -->
+        <div class="skill-category">
+          <h3><i class="fas fa-code"></i> <span data-i18n="programming">Programming</span></h3>
+          <div class="skill-item">
+            <span>TypeScript</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>JavaScript</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Python</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Google Colab</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Visual Studio Code</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Java</span>
+            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
+          </div>
+          <div class="skill-item">
+            <span>SQL</span>
+            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
+          </div>
+        </div>
+
+        <!-- Cloud Platforms - CI/CD -->
+        <div class="skill-category">
+          <h3><i class="fas fa-cloud"></i> <span data-i18n="cloud_platforms">Cloud Platforms - CI/CD</span></h3>
+          <div class="skill-item">
+            <span>Google Cloud Platform</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Amazon Web Services</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Git hub</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Git hub actions</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Git</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Bitbucket</span>
+            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
+          </div>
+          <div class="skill-item">
+            <span>Jenkins</span>
+            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
+          </div>
+        </div>
+
+        <!-- Database Managers -->
+        <div class="skill-category">
+          <h3><i class="fas fa-database"></i> <span data-i18n="databases">Databases</span></h3>
+          <div class="skill-item">
+            <span>MongoDB</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>PostgreSQL</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>MySQL</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>DBeaver</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>SQL Management Studio</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+        </div>
+
+        <!-- Testing Tools -->
+        <div class="skill-category">
+          <h3><i class="fas fa-tools"></i> <span data-i18n="testing_tools">Testing Tools</span></h3>
+          <div class="skill-item">
+            <span>JMeter</span>
+            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
+          </div>
+          <div class="skill-item">
+            <span>Postman</span>
+            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
+          </div>
+          <div class="skill-item">
+            <span>Insomnia</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Rest Assured</span>
+            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
+          </div>
+          <div class="skill-item">
+            <span>Soap UI</span>
+            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
+          </div>
+          <div class="skill-item">
+            <span>Jest</span>
+            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
+          </div>
+        </div>
+
+        <!-- Test Management -->
+        <div class="skill-category">
+          <h3><i class="fas fa-vial"></i> <span data-i18n="test_management">Test Management</span></h3>
+          <div class="skill-item">
+            <span>Notion</span>
+            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
+          </div>
+          <div class="skill-item">
+            <span>Trello</span>
+            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
+          </div>
+          <div class="skill-item">
+            <span>ClickUp</span>
+            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
+          </div>
+          <div class="skill-item">
+            <span>Xray</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>JIRA</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+        </div>
+
+        <!-- Performance tools -->
+        <div class="skill-category">
+          <h3><i class="fas fa-tachometer"></i> <span data-i18n="performance_tools">Performance tools</span></h3>
+          <div class="skill-item">
+            <span>Postman Performance</span>
+            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
+          </div>
+          <div class="skill-item">
+            <span>JMeter</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>BlazeMeter</span>
+            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
+          </div>
+        </div>
+
+        <!-- Automation framework -->
+        <div class="skill-category">
+          <h3><i class="fas fa-robot"></i> <span data-i18n="automation_framework">Automation framework</span></h3>
+          <div class="skill-item">
+            <span>Playwright</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Cypress</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>Selenium WebDriver</span>
+            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
+          </div>
+        </div>
+
+        <!-- Methodologies -->
+        <div class="skill-category">
+          <h3><i class="fas fa-project-diagram"></i> <span data-i18n="methodologies">Methodologies</span></h3>
+          <div class="skill-item">
+            <span data-i18n="agile">Agile</span>
+            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
+          </div>
+          <div class="skill-item">
+            <span>Scrum</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>BDD</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+          </div>
+          <div class="skill-item">
+            <span>TDD</span>
+            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="logo">Francisco Cabezas</div>
-        <p>QA Engineer & Automation Specialist</p>
-        <div class="social-links">
-          <a
-            href="https://www.linkedin.com/in/franciscoantoniocabezasvega/"
-            target="_blank"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a href="https://github.com/franciscoCabezasVega" target="_blank"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a
-            href="https://www.facebook.com/francisco.cabezas.769349/"
-            target="_blank"
-            ><i class="fab fa-facebook"></i
-          ></a>
+  <!-- Testing Experience Section -->
+  <section id="testing-experience" class="skills">
+    <div class="container">
+      <h2 class="text-center mb-30" data-i18n="testing_experience">Testing Experience</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3><i class="fas fa-check-square"></i> <span data-i18n="functional_tests">Functional Tests</span></h3>
+          <div class="skill-item">
+            <span data-i18n="functional_tests_desc">
+              Validates that the software performs its intended functions
+              correctly according to requirements.
+            </span>
+          </div>
+          <div class="center-btn">
+            <label for="modal-functional" class="btn btn-modal" data-i18n="see_testing_technique">
+              See Testing Technique
+            </label>
+          </div>
         </div>
-        <p>&copy; 2025 Francisco Cabezas. All Rights Reserved.</p>
-      </div>
-    </footer>
-
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
-    <script src="scripts.js"></script>
-
-    <!-- Functional Tests Modal -->
-    <input type="checkbox" id="modal-functional" class="modal-toggle" />
-    <div class="modal">
-      <div class="modal-content">
-        <label for="modal-functional" class="close-modal">&times;</label>
-        <h3>Functional Testing Techniques</h3>
-        <ul>
-          <li>Acceptance tests</li>
-          <li>Exploratory Testing</li>
-          <li>Integration tests</li>
-          <li>Regression tests</li>
-          <li>Re-testing</li>
-          <li>Sanity tests</li>
-          <li>Smoke Testing</li>
-          <li>System testing</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Non-functional Tests Modal -->
-    <input type="checkbox" id="modal-nonfunctional" class="modal-toggle" />
-    <div class="modal">
-      <div class="modal-content">
-        <label for="modal-nonfunctional" class="close-modal">&times;</label>
-        <h3>Non-functional Testing Techniques</h3>
-        <ul>
-          <li>Compatibility tests</li>
-          <li>Performance tests</li>
-          <li>Portability testing</li>
-          <li>Security testing</li>
-          <li>Usability testing</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Black Box Testing Modal -->
-    <input type="checkbox" id="modal-blackbox" class="modal-toggle" />
-    <div class="modal">
-      <div class="modal-content">
-        <label for="modal-blackbox" class="close-modal">&times;</label>
-        <h3>Black Box Testing Techniques</h3>
-        <ul>
-          <li>Analysis of boundary values</li>
-          <li>Conjecture of errors</li>
-          <li>Decision tables</li>
-          <li>Equivalence partitions</li>
-          <li>State transition</li>
-          <li>Use cases</li>
+        <div class="skill-category">
+          <h3><i class="fas fa-cogs"></i> <span data-i18n="nonfunctional_tests">Non-functional Tests</span></h3>
+          <div class="skill-item">
+            <span data-i18n="nonfunctional_tests_desc">Evaluates aspects such as performance, usability, reliability,
+              and security of the application.</span>
+          </div>
+          <div class="center-btn">
+            <label for="modal-nonfunctional" class="btn btn-modal" data-i18n="see_testing_technique">
+              See Testing Technique
+            </label>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-th-large"></i> <span data-i18n="black_box_testing">Black Box Testing</span></h3>
+          <div class="skill-item">
+            <span data-i18n="black_box_testing_desc">Focuses on testing the application's functionality without
+              knowledge of internal code or structure.</span>
+          </div>
+          <div class="center-btn">
+            <label for="modal-blackbox" class="btn btn-modal" data-i18n="see_testing_technique">
+              See Testing Technique
+            </label>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-code-branch"></i> <span data-i18n="white_box_testing">White Box Testing</span></h3>
+          <div class="skill-item">
+            <span data-i18n="white_box_testing_desc">Involves testing internal structures or workings of an
+              application, such as code, branches, and paths.</span>
+          </div>
+          <div class="center-btn">
+            <label for="modal-whitebox" class="btn btn-modal" data-i18n="see_testing_technique">
+              See Testing Technique
+            </label>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-file-alt"></i> <span data-i18n="test_documentation">Test Documentation</span></h3>
+          <div class="skill-item">
+            <span data-i18n="test_documentation_desc">Creation and maintenance of test plans, cases, scripts, and
+              reports to ensure traceability and coverage.</span>
+          </div>
+          <div class="center-btn">
+            <label for="modal-documentation" class="btn btn-modal" data-i18n="see_testing_technique">
+              See Testing Technique
+            </label>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- White Box Testing Modal -->
-    <input type="checkbox" id="modal-whitebox" class="modal-toggle" />
-    <div class="modal">
-      <div class="modal-content">
-        <label for="modal-whitebox" class="close-modal">&times;</label>
-        <h3>White Box Testing Techniques</h3>
-        <ul>
-          <li>Branch tests</li>
-          <li>Condition coverage</li>
-          <li>Decision coverage</li>
-          <li>Dynamic analysis</li>
-          <li>Loop tests</li>
-          <li>Road tests</li>
-          <li>Statement coverage</li>
-          <li>Static analysis</li>
-          <li>Unit testing</li>
-        </ul>
+  <!-- Experience Section -->
+  <section id="experience" class="experience">
+    <div class="container">
+      <h2 class="text-center mb-30" data-i18n="work_experience">Work Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-date" data-i18n="jelou_date">February 2023 - Present</span>
+            <h3 data-i18n="qa_analyst">QA Analyst</h3>
+            <h4>Jelou <span class="location">| Ecuador</span></h4>
+            <h5 data-i18n="responsibilities_achievements">Responsibilities and Achievements</h5>
+            <ul>
+              <li>
+                <strong data-i18n="functional_regression_testing">Functional and Regression Testing:</strong>
+                <span data-i18n="jelou_func_regression">Design and execution of manual and automated regression tests
+                  to ensure software stability.</span>
+              </li>
+              <li>
+                <strong data-i18n="api_performance_testing">API and Performance Testing:</strong>
+                <span data-i18n="jelou_api_perf">Validation of system interactions using Postman. Performance
+                  evaluation under load using JMeter.</span>
+              </li>
+              <li>
+                <strong data-i18n="test_automation_data_management">Test Automation and Data Management:</strong>
+                <span data-i18n="jelou_automation_data">Development of automated test scripts with Playwright and
+                  Cypress (TypeScript). Test data management with MongoDB.</span>
+              </li>
+              <li>
+                <strong data-i18n="cicd_containerization">CI/CD and Containerization:</strong>
+                <span data-i18n="jelou_cicd_docker">Implementation of CI/CD pipelines. Use of Docker to optimize
+                  deployment workflows.</span>
+              </li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag">Playwright</span>
+              <span class="project-tag">Cypress</span>
+              <span class="project-tag">TypeScript</span>
+              <span class="project-tag">Postman</span>
+              <span class="project-tag">JMeter</span>
+              <span class="project-tag">MongoDB</span>
+              <span class="project-tag">CI/CD</span>
+              <span class="project-tag">Docker</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-date" data-i18n="houm_date">May 2022 - November 2022</span>
+            <h3 data-i18n="qa_engineer">QA Engineer</h3>
+            <h4>Houm <span class="location">| Chile</span></h4>
+            <h5 data-i18n="responsibilities_achievements">Responsibilities and Achievements</h5>
+            <ul>
+              <li>
+                <strong data-i18n="regression_api_testing">Regression and API Testing:</strong>
+                <span data-i18n="houm_regression_api">Analyzed business needs to develop regression test suites.
+                  Executed API tests to ensure system performance.</span>
+              </li>
+              <li>
+                <strong data-i18n="test_data_simulation">Test Data and Real-World Simulation:</strong>
+                <span data-i18n="houm_test_data">Designed and generated test data to accurately replicate
+                  real-world conditions. Improved testing accuracy using
+                  representative data.</span>
+              </li>
+              <li>
+                <strong data-i18n="test_automation_scripting">Test Automation and Scripting:</strong>
+                <span data-i18n="houm_automation">Created and maintained automated test scripts with Cypress
+                  (JavaScript). Optimized the efficiency and reliability of
+                  automated tests.</span>
+              </li>
+              <li>
+                <strong data-i18n="cicd_integration">CI/CD Integration:</strong>
+                <span data-i18n="houm_cicd">Utilized CI/CD pipelines to integrate test automation into the
+                  development cycle.</span>
+              </li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag">Cypress</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag" data-i18n="api_testing">API Testing</span>
+              <span class="project-tag" data-i18n="regression_testing">Regression Testing</span>
+              <span class="project-tag" data-i18n="test_data">Test Data</span>
+              <span class="project-tag">CI/CD</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-date" data-i18n="zabud_date">January 2020 - May 2022</span>
+            <h3 data-i18n="quality_assurance">Quality Assurance</h3>
+            <h4>
+              ZABUD Technologies <span class="location">| Cartagena</span>
+            </h4>
+            <h5 data-i18n="responsibilities_achievements">Responsibilities and Achievements</h5>
+            <ul>
+              <li>
+                <strong data-i18n="regression_functional_testing">Regression and Functional Testing:</strong>
+                <span data-i18n="zabud_regression_func">Developed regression test suites to ensure application
+                  stability. Executed manual tests for early defect detection.</span>
+              </li>
+              <li>
+                <strong data-i18n="api_database_testing">API and Database Testing:</strong>
+                <span data-i18n="zabud_api_db">Validated APIs and system integrations. Executed database
+                  tests using SQL Server.</span>
+              </li>
+              <li>
+                <strong data-i18n="test_case_design_traceability">Test Case Design and Traceability:</strong>
+                <span data-i18n="zabud_test_case">Created and maintained test cases and traceability matrix.
+                  Generated custom test data to improve coverage.</span>
+              </li>
+              <li>
+                <strong data-i18n="test_automation">Test Automation:</strong>
+                <span data-i18n="zabud_automation">Developed automation frameworks using Java. Implemented UI
+                  tests with Selenium. Used CI/CD pipelines for executing
+                  automated tests.</span>
+              </li>
+              <li>
+                <strong data-i18n="performance_issue_tracking">Performance Testing and Issue Tracking:</strong>
+                <span data-i18n="zabud_perf_issue">Conducted performance tests with JMeter. Managed and tracked
+                  defects with Jira.</span>
+              </li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag">Java</span>
+              <span class="project-tag">Selenium</span>
+              <span class="project-tag">JMeter</span>
+              <span class="project-tag">Jira</span>
+              <span class="project-tag">SQL Server</span>
+              <span class="project-tag" data-i18n="api_testing">API Testing</span>
+              <span class="project-tag">CI/CD</span>
+              <span class="project-tag" data-i18n="automation_frameworks">Automation Frameworks</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Test Documentation Testing Modal -->
-    <input type="checkbox" id="modal-documentation" class="modal-toggle" />
-    <div class="modal">
-      <div class="modal-content">
-        <label for="modal-documentation" class="close-modal">&times;</label>
-        <h3>Test Documentation Techniques</h3>
-        <ul>
-          <li>Bug Reporting</li>
-          <li>Suggested improvement</li>
-          <li>Test plan</li>
-          <li>Test suite</li>
-        </ul>
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="text-center mb-30" data-i18n="featured_projects">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image" style="background: #3498db">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div class="project-content">
+            <h3 data-i18n="whatsapp_tester">WhatsApp Tester</h3>
+            <p data-i18n="whatsapp_tester_desc">
+              Automated WhatsApp chatbot validation system that sends messages
+              and monitors responses.
+            </p>
+            <ul>
+              <li data-i18n="whatsapp_tester_li1">
+                Developed script to automate message sending and response
+                monitoring
+              </li>
+              <li data-i18n="whatsapp_tester_li2">Generated automatic reports on activity and errors</li>
+              <li data-i18n="whatsapp_tester_li3">Integrated with Slack for real-time notifications</li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag" data-i18n="automation">Automation</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Slack API</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image" style="background: #2ecc71">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="project-content">
+            <h3 data-i18n="kpi_reports_automation">KPI Reports Automation</h3>
+            <p data-i18n="kpi_reports_automation_desc">
+              Automated generation of performance indicators reports to
+              optimize decision-making.
+            </p>
+            <ul>
+              <li data-i18n="kpi_reports_automation_li1">Automated KPI reports using Python</li>
+              <li data-i18n="kpi_reports_automation_li2">Extracted data from ClickUp API</li>
+              <li data-i18n="kpi_reports_automation_li3">Generated reports in Google Colab ready to share</li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag" data-i18n="data_analysis">Data Analysis</span>
+              <span class="project-tag">Google Colab</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image" style="background: #e74c3c">
+            <i class="fas fa-home"></i>
+          </div>
+          <div class="project-content">
+            <h3 data-i18n="lead_verifier">Lead Verifier</h3>
+            <p data-i18n="lead_verifier_desc">
+              Validation system for forms and contact flow on real estate
+              portals.
+            </p>
+            <ul>
+              <li data-i18n="lead_verifier_li1">
+                Developed scripts with Cypress to simulate user behavior
+              </li>
+              <li data-i18n="lead_verifier_li2">Automated navigation between property listings</li>
+              <li data-i18n="lead_verifier_li3">Tested contact forms to ensure error-free lead capture</li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag">Cypress</span>
+              <span class="project-tag" data-i18n="automation">Automation</span>
+              <span class="project-tag" data-i18n="e2e_testing">E2E Testing</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    
-  </body>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="certifications">
+    <div class="container">
+      <h2 class="text-center mb-30" data-i18n="certifications">Certifications</h2>
+      <div class="certs-container">
+        <div class="cert-card">
+          <span class="cert-type" data-i18n="technical">Technical</span>
+          <h3 data-i18n="istqb">ISTQB® Certified Tester - Foundation Level</h3>
+          <p data-i18n="istqb_desc">
+            International certification in software quality assurance covering
+            fundamental testing concepts and practices.
+          </p>
+        </div>
+
+        <div class="cert-card">
+          <span class="cert-type">Cloud</span>
+          <h3 data-i18n="gcp_certifications">Google Cloud Platform Certifications</h3>
+          <ul>
+            <li data-i18n="gcp_cert1">From Data to Insights with Google Cloud Platform</li>
+            <li data-i18n="gcp_cert2">Architecting with Google Compute Engine</li>
+          </ul>
+          <p data-i18n="gcp_desc">
+            Designing scalable solutions and using BigQuery, Data Studio, and
+            data analysis tools.
+          </p>
+        </div>
+
+        <div class="cert-card">
+          <span class="cert-type" data-i18n="agile">Agile</span>
+          <h3 data-i18n="scrum_cert">SCRUM Foundation Professional Certificate (SFPC)</h3>
+          <p data-i18n="scrum_desc">
+            Certification covering principles and fundamentals of the SCRUM
+            methodology for agile development.
+          </p>
+        </div>
+
+        <div class="cert-card">
+          <span class="cert-type" data-i18n="ai">AI</span>
+          <h3 data-i18n="ai_cert">Artificial Intelligence - MinTIC</h3>
+          <p data-i18n="ai_desc">
+            Fundamentals and practical applications of AI in the public
+            sector.
+          </p>
+        </div>
+
+        <div class="cert-card">
+          <span class="cert-type" data-i18n="language">Language</span>
+          <h3 data-i18n="ef_set">EF SET Certificate™</h3>
+          <p data-i18n="ef_set_desc">
+            English proficiency evaluation based on CEFR standards (B2 level).
+          </p>
+        </div>
+
+        <div class="cert-card">
+          <span class="cert-type">Cloud Labs</span>
+          <h3 data-i18n="qwiklabs">Qwiklabs Certifications</h3>
+          <p data-i18n="qwiklabs_desc">Hands-on labs in Google Cloud and DevOps technologies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="achievements">
+    <div class="container">
+      <h2 class="text-center mb-30" data-i18n="professional_achievements">Professional Achievements</h2>
+
+      <div class="achievement-card">
+        <div class="achievement-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="achievement-content">
+          <span class="company">Jelou</span>
+          <h3 data-i18n="reduction_defects">Reduction of Defects in Production</h3>
+          <p data-i18n="reduction_defects_desc">
+            Managed to reduce
+            <span class="highlight" data-i18n="production_errors_40">production errors by 40%</span> thanks to
+            the implementation of more robust testing strategies and early
+            reviews in the development cycle.
+          </p>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="achievement-content">
+          <span class="company">Jelou</span>
+          <h3 data-i18n="training_capacity">Training and Capacity Building</h3>
+          <p data-i18n="training_capacity_desc">
+            Led <span class="highlight" data-i18n="internal_training">internal training</span> on QA best
+            practices, driving the team's maturity in areas such as
+            automation, test case design, and ISTQB techniques.
+          </p>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-icon">
+          <i class="fas fa-trophy"></i>
+        </div>
+        <div class="achievement-content">
+          <span class="company">Jelou</span>
+          <h3 data-i18n="recognition_kpi">Recognition for Automating KPIs</h3>
+          <p data-i18n="recognition_kpi_desc">
+            Publicly praised during a company meeting for the initiative to
+            automate KPI reports through the ClickUp API and Google Colab.
+            This automation allowed management to make decisions faster and
+            with more confidence, being recognized as a
+            <span class="highlight" data-i18n="model_efficiency">model of efficiency</span> within the
+            organization.
+          </p>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="achievement-content">
+          <span class="company">ZABUD Technologies</span>
+          <h3 data-i18n="qa_automation_implementation">QA Automation Implementation</h3>
+          <p data-i18n="qa_automation_implementation_desc">
+            Designed and implemented
+            <span class="highlight" data-i18n="automated_qa_processes">automated QA processes</span> that
+            optimized repetitive tasks and freed up the team's time to focus
+            on exploratory testing.
+          </p>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <div class="achievement-content">
+          <span class="company">Houm</span>
+          <h3 data-i18n="improvement_testing_efficiency">Improvement in Testing Efficiency</h3>
+          <p data-i18n="improvement_testing_efficiency_desc">
+            Improved
+            <span class="highlight" data-i18n="test_cycle_efficiency_50">test cycle efficiency by 50%</span>,
+            reducing validation times and accelerating the delivery of stable
+            versions to the development team.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="text-center mb-30" data-i18n="get_in_touch">Get In Touch</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3 data-i18n="contact_information">Contact Information</h3>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>frank_vega25@hotmail.com</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <div>
+              <a href="https://www.linkedin.com/in/franciscoantoniocabezasvega/"
+                target="_blank">franciscoantoniocabezasvega</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <div>
+              <a href="https://github.com/franciscoCabezasVega" target="_blank">franciscoCabezasVega</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div data-i18n="location">Cartagena, Colombia</div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name" data-i18n="name">Name</label>
+              <input type="text" id="name" name="name" required autocomplete="name"/>
+            </div>
+            <div class="form-group">
+              <label for="email" data-i18n="email_label">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email"/>
+            </div>
+            <div class="form-group">
+              <label for="subject" data-i18n="subject">Subject</label>
+              <input type="text" id="subject" name="subject" />
+            </div>
+            <div class="form-group">
+              <label for="message" data-i18n="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="g-recaptcha" data-sitekey="6LdPP3IrAAAAANNJUw3OhGK-Tbym1JyIAgzIOOPm"></div>
+            <button type="submit" class="btn" id="send-btn" disabled data-i18n="send_message">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="logo">Francisco Cabezas</div>
+      <p data-i18n="footer_title">QA Engineer & Automation Specialist</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/franciscoantoniocabezasvega/" target="_blank"><i
+            class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/franciscoCabezasVega" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.facebook.com/francisco.cabezas.769349/" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
+      <p data-i18n="copyright">&copy; 2025 Francisco Cabezas. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="scripts.js"></script>
+
+  <!-- Functional Tests Modal -->
+  <input type="checkbox" id="modal-functional" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-content">
+      <label for="modal-functional" class="close-modal">&times;</label>
+      <h3 data-i18n="functional_testing_techniques">Functional Testing Techniques</h3>
+      <ul>
+        <li data-i18n="acceptance_tests">Acceptance tests</li>
+        <li data-i18n="exploratory_testing">Exploratory Testing</li>
+        <li data-i18n="integration_tests">Integration tests</li>
+        <li data-i18n="regression_tests">Regression tests</li>
+        <li>Re-testing</li>
+        <li data-i18n="sanity_tests">Sanity tests</li>
+        <li data-i18n="smoke_testing">Smoke Testing</li>
+        <li data-i18n="system_testing">System testing</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Non-functional Tests Modal -->
+  <input type="checkbox" id="modal-nonfunctional" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-content">
+      <label for="modal-nonfunctional" class="close-modal">&times;</label>
+      <h3 data-i18n="nonfunctional_testing_techniques">Non-functional Testing Techniques</h3>
+      <ul>
+        <li data-i18n="compatibility_tests">Compatibility tests</li>
+        <li data-i18n="performance_tests">Performance tests</li>
+        <li data-i18n="portability_testing">Portability testing</li>
+        <li data-i18n="security_testing">Security testing</li>
+        <li data-i18n="usability_testing">Usability testing</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Black Box Testing Modal -->
+  <input type="checkbox" id="modal-blackbox" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-content">
+      <label for="modal-blackbox" class="close-modal">&times;</label>
+      <h3 data-i18n="black_box_testing_techniques">Black Box Testing Techniques</h3>
+      <ul>
+        <li data-i18n="boundary_values">Analysis of boundary values</li>
+        <li data-i18n="error_guessing">Conjecture of errors</li>
+        <li data-i18n="decision_tables">Decision tables</li>
+        <li data-i18n="equivalence_partitions">Equivalence partitions</li>
+        <li data-i18n="state_transition">State transition</li>
+        <li data-i18n="use_cases">Use cases</li>
+    </div>
+  </div>
+
+  <!-- White Box Testing Modal -->
+  <input type="checkbox" id="modal-whitebox" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-content">
+      <label for="modal-whitebox" class="close-modal">&times;</label>
+      <h3 data-i18n="white_box_testing_techniques">White Box Testing Techniques</h3>
+      <ul>
+        <li data-i18n="branch_tests">Branch tests</li>
+        <li data-i18n="condition_coverage">Condition coverage</li>
+        <li data-i18n="decision_coverage">Decision coverage</li>
+        <li data-i18n="dynamic_analysis">Dynamic analysis</li>
+        <li data-i18n="loop_tests">Loop tests</li>
+        <li data-i18n="road_tests">Road tests</li>
+        <li data-i18n="statement_coverage">Statement coverage</li>
+        <li data-i18n="static_analysis">Static analysis</li>
+        <li data-i18n="unit_testing">Unit testing</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Test Documentation Testing Modal -->
+  <input type="checkbox" id="modal-documentation" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-content">
+      <label for="modal-documentation" class="close-modal">&times;</label>
+      <h3 data-i18n="test_documentation_techniques">Test Documentation Techniques</h3>
+      <ul>
+        <li data-i18n="bug_reporting">Bug Reporting</li>
+        <li data-i18n="suggested_improvement">Suggested improvement</li>
+        <li data-i18n="test_plan">Test plan</li>
+        <li data-i18n="test_suite">Test suite</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+
 </html>
