@@ -616,14 +616,6 @@ nav ul li a:hover {
   display: block;
 }
 
-.highlight {
-  background: #e3f2fd;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-weight: 600;
-  color: var(--secondary);
-}
-
 /* Contact Section */
 .contact {
   background: linear-gradient(135deg, var(--primary), var(--dark));
