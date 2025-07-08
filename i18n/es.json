@@ -79,7 +79,7 @@
   "regression_functional_testing": "Pruebas de Regresión y Funcionales:",
   "zabud_regression_func": "Desarrollo de suites de regresión para asegurar la estabilidad de la aplicación. Ejecución de pruebas manuales para detección temprana de defectos.",
   "api_database_testing": "Pruebas de API y Base de Datos:",
-  "zabud_api_db": "Validación de APIs e integraciones del sistema. Ejecución de pruebas de base de datos usando SQL Server.",
+  "zabud_api_db": "Validación de APIs e integraciones del sistema. Ejecución de pruebas de base de datos usando PostgreSQL.",
   "test_case_design_traceability": "Diseño de Casos de Prueba y Trazabilidad:",
   "zabud_test_case": "Creación y mantenimiento de casos de prueba y matriz de trazabilidad. Generación de datos de prueba personalizados para mejorar la cobertura.",
   "test_automation": "Automatización de Pruebas:",
