@@ -176,5 +176,6 @@
   "error_invalid_email": "Formato de correo inválido.",
   "error_min_chars": "Mínimo {min} caracteres requeridos.",
   "error_max_chars": "Máximo {max} caracteres permitidos.",
-  "error_invalid_chars": "Caracteres inválidos detectados."
+  "error_invalid_chars": "Caracteres inválidos detectados.",
+  "test_automation_patterns": "Patrones de Automatización"
 }
