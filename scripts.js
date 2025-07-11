@@ -20,7 +20,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 // Inicializar EmailJS con el nuevo método
 (function () {
   emailjs.init({
-    publicKey: "uUuu06tIRxoNojbvc", // Reemplaza con tu Public Key real
+    publicKey: "uUuu06tIRxoNojbvc",
   });
 })();
 
