@@ -24,6 +24,9 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 })();
 
+// Variable global para almacenar el diccionario de traducciones actual
+let currentTranslations = {};
+
 document.addEventListener("DOMContentLoaded", function () {
   // Configuración de los campos
   const config = {
@@ -154,12 +157,12 @@ document.addEventListener("DOMContentLoaded", function () {
       if (hasError) {
         if (field === "email") {
           if (!/^[a-z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}$/i.test(value)) {
-            error.textContent = "Invalid email format.";
+            error.textContent = currentTranslations['error_invalid_email'] || "Invalid email format.";
           } else {
-            error.textContent = `Minimum ${config[field].min} characters required.`;
+            error.textContent = (currentTranslations['error_min_chars'] || "Minimum {min} characters required.").replace('{min}', config[field].min);
           }
         } else {
-          error.textContent = `Minimum ${config[field].min} characters required.`;
+          error.textContent = (currentTranslations['error_min_chars'] || "Minimum {min} characters required.").replace('{min}', config[field].min);
         }
         error.style.display = "block";
         counter.style.color = "#e74c3c";
@@ -204,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Llama una vez al cargar para inicializar el estado del botón
   validateFormRealtime();
 
-  // Validación al enviar
+    // Validación al enviar
   form.addEventListener("submit", function (e) {
     let valid = true;
     fields.forEach((field) => {
@@ -214,26 +217,26 @@ document.addEventListener("DOMContentLoaded", function () {
       const error = parent.querySelector(".error-label");
       // Validations
       if (!value) {
-        error.textContent = "This field is required.";
+        error.textContent = currentTranslations['error_required'] || "This field is required.";
         error.style.display = "block";
         valid = false;
       } else if (
         field === "email" &&
         !/^[a-z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}$/i.test(value)
       ) {
-        error.textContent = "Invalid email format.";
+        error.textContent = currentTranslations['error_invalid_email'] || "Invalid email format.";
         error.style.display = "block";
         valid = false;
       } else if (value.length < config[field].min) {
-        error.textContent = `Minimum ${config[field].min} characters required.`;
+        error.textContent = (currentTranslations['error_min_chars'] || "Minimum {min} characters required.").replace('{min}', config[field].min);
         error.style.display = "block";
         valid = false;
       } else if (value.length > config[field].max) {
-        error.textContent = `Maximum ${config[field].max} characters allowed.`;
+        error.textContent = (currentTranslations['error_max_chars'] || "Maximum {max} characters allowed.").replace('{max}', config[field].max);
         error.style.display = "block";
         valid = false;
       } else if (!config[field].regex.test(value)) {
-        error.textContent = "Invalid characters detected.";
+        error.textContent = currentTranslations['error_invalid_chars'] || "Invalid characters detected.";
         error.style.display = "block";
         valid = false;
       } else {
@@ -285,6 +288,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     sendBtn.disabled = true;
   });
+
+  // Evento para el botón de limpiar
+  const clearBtn = document.getElementById("clear-btn");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      
+      // Limpiar campos
+      form.reset();
+      
+      // Limpiar errores, contadores y estilos
+      fields.forEach((field) => {
+        const input = document.getElementById(field);
+        const parent = input.parentNode;
+        const error = parent.querySelector(".error-label");
+        const counter = parent.querySelector(".char-counter");
+        
+        if (error) {
+          error.style.display = "none";
+          error.textContent = "";
+        }
+        if (counter) {
+          counter.textContent = `0 / ${config[field].max}`;
+          counter.style.color = "#888";
+        }
+        input.classList.remove("input-error");
+        input.classList.remove("input-success");
+      });
+      
+      sendBtn.disabled = true;
+      
+      // Limpiar reCAPTCHA
+      grecaptcha.reset();
+    });
+  }
+
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -315,6 +354,46 @@ document.addEventListener("DOMContentLoaded", function () {
 const langSwitcher = document.getElementById('lang-switcher');
 const defaultLang = 'en';
 
+// Función para traducir mensajes de error visibles
+function updateVisibleErrors() {
+  const fields = ["name", "email", "subject", "message"];
+  const config = {
+    name: { min: 10, max: 100 },
+    email: { min: 10, max: 100 },
+    subject: { min: 10, max: 100 },
+    message: { min: 10, max: 250 },
+  };
+
+  fields.forEach((field) => {
+    const input = document.getElementById(field);
+    const parent = input.parentNode;
+    const error = parent.querySelector(".error-label");
+
+    // Si hay un error visible, traducirlo
+    if (error && error.style.display !== "none" && error.textContent) {
+      const value = input.value.trim();
+
+      // Determinar qué tipo de error es y traducir
+      if (!value) {
+        error.textContent = currentTranslations['error_required'] || "This field is required.";
+      } else if (
+        field === "email" &&
+        !/^[a-z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}$/i.test(value)
+      ) {
+        error.textContent = currentTranslations['error_invalid_email'] || "Invalid email format.";
+      } else if (value.length < config[field].min) {
+        error.textContent = (currentTranslations['error_min_chars'] || "Minimum {min} characters required.").replace('{min}', config[field].min);
+      } else if (value.length > config[field].max) {
+        error.textContent = (currentTranslations['error_max_chars'] || "Maximum {max} characters allowed.").replace('{max}', config[field].max);
+      } else if (field === "email" && !/^[a-z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}$/i.test(value)) {
+        error.textContent = currentTranslations['error_invalid_email'] || "Invalid email format.";
+      } else {
+        error.textContent = currentTranslations['error_invalid_chars'] || "Invalid characters detected.";
+      }
+    }
+  });
+}
+
 function setLang(lang) {
   if (lang === 'en') {
     // Restaurar textos por defecto (inglés)
@@ -324,16 +403,23 @@ function setLang(lang) {
         el.textContent = el.getAttribute('data-i18n-default');
       }
     });
+    currentTranslations = {}; // Limpiar traducciones (usaremos valores por defecto en inglés)
+    // Actualizar mensajes de error visibles inmediatamente para inglés
+    updateVisibleErrors();
   } else {
     fetch(`i18n/${lang}.json`)
       .then(res => res.json())
       .then(dict => {
+        currentTranslations = dict; // Guardar las traducciones globalmente
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
           if (dict[key]) el.textContent = dict[key];
         });
+        // Actualizar mensajes de error visibles después de que las traducciones se carguen
+        updateVisibleErrors();
       });
   }
+  
   localStorage.setItem('lang', lang);
 }
 

@@ -152,5 +152,6 @@
   "error_min_chars": "Mínimo {min} caracteres requeridos.",
   "error_max_chars": "Máximo {max} caracteres permitidos.",
   "error_invalid_chars": "Caracteres inválidos detectados.",
+  "clear_form": "Limpiar",
   "test_automation_patterns": "Patrones de Automatización"
 }
