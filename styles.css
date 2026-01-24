@@ -278,6 +278,8 @@ nav ul li a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .skill-item:last-child {
@@ -286,12 +288,29 @@ nav ul li a:hover {
   padding-bottom: 0;
 }
 
+.skill-item > span:first-child {
+  flex: 1;
+  min-width: 120px;
+}
+
+.skill-years {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #ecf0f1;
+  color: #2c3e50;
+  white-space: nowrap;
+}
+
 .skill-level {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .level-expert {
@@ -847,6 +866,16 @@ footer::before {
 
   .hero h1 {
     font-size: 2.5rem;
+  }
+
+  .skill-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .skill-item > span:first-child {
+    font-weight: 600;
   }
 }
 

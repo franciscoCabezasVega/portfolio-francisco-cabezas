@@ -141,11 +141,14 @@
   "suggested_improvement": "Mejora sugerida",
   "test_plan": "Plan de pruebas",
   "test_suite": "Suite de pruebas",
+  "years": "años",
+  "year": "año",
   "error_required": "Este campo es obligatorio.",
   "error_invalid_email": "Formato de correo inválido.",
   "error_min_chars": "Mínimo {min} caracteres requeridos.",
   "error_max_chars": "Máximo {max} caracteres permitidos.",
   "error_invalid_chars": "Caracteres inválidos detectados.",
   "clear_form": "Limpiar",
-  "test_automation_patterns": "Patrones de Automatización"
+  "test_automation_patterns": "Patrones de Automatización",
+  "ai_tools": "Herramientas de IA"
 }
