@@ -1,3 +1,19 @@
+// Calcular años de experiencia dinámicamente
+function calculateYearsOfExperience() {
+  const startYear = 2020;
+  const currentYear = new Date().getFullYear();
+  return currentYear - startYear;
+}
+
+// Actualizar años de experiencia en todo el documento
+function updateYearsOfExperience() {
+  const years = calculateYearsOfExperience();
+  const elements = document.querySelectorAll('.years-experience');
+  elements.forEach(element => {
+    element.textContent = years;
+  });
+}
+
 // Mobile menu toggle
 document.querySelector(".mobile-menu").addEventListener("click", function () {
   document.querySelector("nav ul").classList.toggle("show");
@@ -400,12 +416,14 @@ function setLang(lang) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       // Puedes guardar el texto original en un atributo al cargar la página
       if (el.hasAttribute('data-i18n-default')) {
-        el.textContent = el.getAttribute('data-i18n-default');
+        el.innerHTML = el.getAttribute('data-i18n-default');
       }
     });
     currentTranslations = {}; // Limpiar traducciones (usaremos valores por defecto en inglés)
     // Actualizar mensajes de error visibles inmediatamente para inglés
     updateVisibleErrors();
+    // Actualizar años después de cambiar idioma
+    updateYearsOfExperience();
   } else {
     fetch(`i18n/${lang}.json`)
       .then(res => res.json())
@@ -413,10 +431,12 @@ function setLang(lang) {
         currentTranslations = dict; // Guardar las traducciones globalmente
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
-          if (dict[key]) el.textContent = dict[key];
+          if (dict[key]) el.innerHTML = dict[key];
         });
         // Actualizar mensajes de error visibles después de que las traducciones se carguen
         updateVisibleErrors();
+        // Actualizar años después de cambiar idioma
+        updateYearsOfExperience();
       });
   }
   
@@ -430,6 +450,9 @@ document.addEventListener('DOMContentLoaded', () => {
       el.setAttribute('data-i18n-default', el.textContent);
     }
   });
+  
+  // Actualizar años de experiencia al cargar la página
+  updateYearsOfExperience();
 });
 
 if (langSwitcher) {
