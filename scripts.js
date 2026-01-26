@@ -445,14 +445,14 @@ function setLang(lang) {
 
 // Guardar los textos por defecto al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
+  // Actualizar años de experiencia ANTES de guardar el texto por defecto
+  updateYearsOfExperience();
+  
   document.querySelectorAll('[data-i18n]').forEach(el => {
     if (!el.hasAttribute('data-i18n-default')) {
-      el.setAttribute('data-i18n-default', el.textContent);
+      el.setAttribute('data-i18n-default', el.innerHTML);
     }
   });
-  
-  // Actualizar años de experiencia al cargar la página
-  updateYearsOfExperience();
 });
 
 if (langSwitcher) {
