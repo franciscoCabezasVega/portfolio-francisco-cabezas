@@ -400,7 +400,7 @@ nav ul li a:hover {
 .timeline-content ul {
   list-style: none;
   padding-left: 0;
-  margin-bottom: 0;
+  margin-bottom: 15px;
 }
 
 .timeline-content ul li {
