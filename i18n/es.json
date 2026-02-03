@@ -150,5 +150,6 @@
   "error_invalid_chars": "Caracteres inválidos detectados.",
   "clear_form": "Limpiar",
   "test_automation_patterns": "Patrones de Automatización",
-  "ai_tools": "Herramientas de IA"
+  "ai_tools": "Herramientas de IA",
+  "office_tools": "Herramientas Ofimáticas"
 }
