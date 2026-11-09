@@ -123,7 +123,7 @@ window.I18N.es = {
   "jr2": "Suites de automatización E2E con Cypress y Playwright.",
   "jr3": "Validación de modelos de IA y chatbots en WhatsApp y redes sociales (LLM Testing, MCP).",
   "jr4": "Diseño de pruebas asistido por IA (Copilot, MCP) y mejora de procesos CI/CD (Docker, AWS).",
-  "jr5": "Pruebas de apps móviles (React Native) en Android e iOS.",
+  "jr5": "Pruebas de apps móviles (React Native, y Flutter con Patrol) en Android e iOS.",
   "lang_en": "Inglés",
   "lang_es": "Español",
   "lang_label": "Idioma",
