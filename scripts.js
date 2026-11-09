@@ -1,464 +1,352 @@
-// Calcular años de experiencia dinámicamente
-function calculateYearsOfExperience() {
-  const startYear = 2020;
-  const currentYear = new Date().getFullYear();
-  return currentYear - startYear;
-}
+(() => {
+  "use strict";
 
-// Actualizar años de experiencia en todo el documento
-function updateYearsOfExperience() {
-  const years = calculateYearsOfExperience();
-  const elements = document.querySelectorAll('.years-experience');
-  elements.forEach(element => {
-    element.textContent = years;
-  });
-}
+  const $ = (selector, scope = document) => scope.querySelector(selector);
+  const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+  const root = document.documentElement;
 
-// Mobile menu toggle
-document.querySelector(".mobile-menu").addEventListener("click", function () {
-  document.querySelector("nav ul").classList.toggle("show");
-});
+  const START_YEAR = 2020;
+  const EMAILJS = { publicKey: "uUuu06tIRxoNojbvc", service: "service_0pxmsh7", template: "template_y5l3mx4" };
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
-    });
-
-    // Close mobile menu after click
-    document.querySelector("nav ul").classList.remove("show");
-  });
-});
-
-// Inicializar EmailJS con el nuevo método
-(function () {
-  emailjs.init({
-    publicKey: "uUuu06tIRxoNojbvc",
-  });
-})();
-
-// Variable global para almacenar el diccionario de traducciones actual
-let currentTranslations = {};
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Configuración de los campos
-  const config = {
-    name: { min: 10, max: 100, regex: /^[a-z0-9.\-_@ ]+$/i },
-    email: { min: 10, max: 100, regex: /^[a-z0-9.\-_@]+$/i },
-    subject: { min: 10, max: 100, regex: /^[a-z0-9.\-_@ ]+$/i },
-    message: { min: 10, max: 250, regex: /^[a-z0-9.\-_@ \n\r]+$/i },
+  const storage = {
+    get(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    },
+    set(key, value) {
+      try {
+        localStorage.setItem(key, value);
+      } catch {
+        /* almacenamiento no disponible: la página funciona igual */
+      }
+    },
   };
 
-  // Elementos
-  const form = document.getElementById("contact-form");
-  const fields = ["name", "email", "subject", "message"];
-  const sendBtn = document.getElementById("send-btn");
+  /* ------------------------------------------------------------------ i18n */
+  // Textos por defecto (inglés) para mensajes creados desde JavaScript.
+  const EN = {
+    error_required: "This field is required.",
+    error_invalid_email: "Enter a valid email address.",
+    error_min_chars: "At least {min} characters required.",
+    error_max_chars: "Maximum {max} characters allowed.",
+    error_invalid_chars: "Invalid characters detected.",
+    form_sending: "Sending…",
+    form_success: "Message sent. Thank you!",
+    form_error: "Something went wrong. Please try again.",
+    captcha_required: "Please complete the reCAPTCHA.",
+  };
 
-  // Crear contadores y errores
-  fields.forEach((field) => {
-    const input = document.getElementById(field);
+  let dict = {};
+  const t = (key) => dict[key] ?? EN[key] ?? key;
+  const defaultTitle = document.title;
+  const langSwitcher = $("#lang-switcher");
 
-    // Contenedor para error y contador
-    let infoRow = document.createElement("div");
-    infoRow.className = "info-row";
-    infoRow.style.display = "flex";
-    infoRow.style.justifyContent = "space-between";
-    infoRow.style.alignItems = "center";
-    infoRow.style.marginTop = "2px";
-
-    // Error
-    let error = document.createElement("label");
-    error.className = "error-label";
-    error.style.color = "#e74c3c";
-    error.style.fontSize = "0.95em";
-    error.style.display = "none";
-    error.setAttribute("for", field); // Asocia el label al input correspondiente
-
-    // Contador
-    let counter = document.createElement("div");
-    counter.className = "char-counter";
-    counter.style.fontSize = "0.9em";
-    counter.style.color = "#888";
-    counter.style.textAlign = "right";
-
-    // Añadir al DOM
-    infoRow.appendChild(error);
-    infoRow.appendChild(counter);
-    input.parentNode.appendChild(infoRow);
-
-    // Actualizar contador y limitar caracteres
-    input.addEventListener("input", function (e) {
-      // Limitar longitud
-      if (input.value.length > config[field].max) {
-        input.value = input.value.slice(0, config[field].max);
-      }
-      // Solo caracteres permitidos (omite {}´´[])
-      input.value = input.value.replace(/[{}\[\]´`]/g, "");
-      // Actualizar contador
-      counter.textContent = `${input.value.length} / ${config[field].max}`;
-      // Cambia color del contador según la cantidad de caracteres
-      const trimmedLength = input.value.trim().length;
-      if (trimmedLength > 0 && trimmedLength < config[field].min) {
-        counter.style.color = "#e74c3c"; // rojo
-      } else if (trimmedLength >= config[field].min) {
-        counter.style.color = "#27ae60"; // verde
-      } else {
-        counter.style.color = "#888"; // gris
-      }
-      // Validar estado para bordes
-      let hasError = false;
-      if (field === "email") {
-        if (
-          trimmedLength > 0 &&
-          !/^[a-z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}$/i.test(input.value.trim())
-        ) {
-          hasError = true;
-        } else if (trimmedLength > 0 && trimmedLength < config[field].min) {
-          hasError = true;
-        }
-      } else {
-        if (trimmedLength > 0 && trimmedLength < config[field].min) {
-          hasError = true;
-        }
-      }
-      if (hasError) {
-        input.classList.add("input-error");
-        input.classList.remove("input-success");
-      } else if (trimmedLength >= config[field].min) {
-        input.classList.remove("input-error");
-        input.classList.add("input-success");
-      } else {
-        input.classList.remove("input-error");
-        input.classList.remove("input-success");
-      }
-      // Ocultar error al escribir
-      error.style.display = "none";
+  function storeDefaults() {
+    $$("[data-i18n]").forEach((el) => {
+      if (!("i18nDefault" in el.dataset)) el.dataset.i18nDefault = el.innerHTML;
     });
-
-    // Inicializar contador
-    counter.textContent = `0 / ${config[field].max}`;
-
-    // Evento para mostrar error de mínimo al salir del campo
-    input.addEventListener("blur", function () {
-      const value = input.value.trim();
-      let hasError = false;
-      if (field === "email") {
-        if (
-          value.length > 0 &&
-          !/^[a-z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}$/i.test(value)
-        ) {
-          hasError = true;
-        } else if (value.length > 0 && value.length < config[field].min) {
-          hasError = true;
-        }
-      } else {
-        if (value.length > 0 && value.length < config[field].min) {
-          hasError = true;
-        }
-      }
-      if (hasError) {
-        input.classList.add("input-error");
-        input.classList.remove("input-success");
-      } else if (value.length >= config[field].min) {
-        input.classList.remove("input-error");
-        input.classList.add("input-success");
-      } else {
-        input.classList.remove("input-error");
-        input.classList.remove("input-success");
-      }
-      // Mostrar error específico
-      if (hasError) {
-        if (field === "email") {
-          if (!/^[a-z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}$/i.test(value)) {
-            error.textContent = currentTranslations['error_invalid_email'] || "Invalid email format.";
-          } else {
-            error.textContent = (currentTranslations['error_min_chars'] || "Minimum {min} characters required.").replace('{min}', config[field].min);
-          }
-        } else {
-          error.textContent = (currentTranslations['error_min_chars'] || "Minimum {min} characters required.").replace('{min}', config[field].min);
-        }
-        error.style.display = "block";
-        counter.style.color = "#e74c3c";
-      } else {
-        error.style.display = "none";
-        // Mantener verde si cumple el mínimo, gris si está vacío
-        if (value.length >= config[field].min) {
-          counter.style.color = "#27ae60";
-        } else {
-          counter.style.color = "#888";
-        }
-      }
+    $$("[data-i18n-aria]").forEach((el) => {
+      if (!("i18nAriaDefault" in el.dataset)) el.dataset.i18nAriaDefault = el.getAttribute("aria-label") || "";
     });
-  });
-
-  // Función para validar todos los campos en tiempo real
-  function validateFormRealtime() {
-    let allValid = true;
-    fields.forEach((field) => {
-      const input = document.getElementById(field);
-      const value = input.value.trim();
-      if (
-        !value ||
-        value.length < config[field].min ||
-        value.length > config[field].max ||
-        !config[field].regex.test(value) ||
-        (field === "email" &&
-          !/^[a-z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}$/i.test(value))
-      ) {
-        allValid = false;
-      }
-    });
-    sendBtn.disabled = !allValid;
   }
 
-  // Llama a la validación en cada input
-  fields.forEach((field) => {
-    const input = document.getElementById(field);
-    input.addEventListener("input", validateFormRealtime);
-  });
+  function updateDynamicText() {
+    const year = new Date().getFullYear();
+    $$(".years-experience").forEach((el) => (el.textContent = year - START_YEAR));
+    $$(".current-year").forEach((el) => (el.textContent = year));
 
-  // Llama una vez al cargar para inicializar el estado del botón
-  validateFormRealtime();
+    // Años de uso calculados desde la fecha de inicio (data-since="AAAA-MM-DD").
+    const today = new Date();
+    $$(".skill-years[data-since]").forEach((el) => {
+      const [y, m, d] = el.dataset.since.split("-").map(Number);
+      let years = today.getFullYear() - y;
+      if (today < new Date(today.getFullYear(), m - 1, d)) years -= 1;
+      years = Math.max(years, 0);
+      const unitKey = years > 1 ? "years" : "year";
+      const unit = $("[data-unit]", el);
+      $("[data-num]", el).textContent = years < 1 ? "<1" : years;
+      unit.dataset.i18n = unitKey;
+      unit.dataset.i18nDefault = unitKey;
+      unit.innerHTML = dict[unitKey] ?? unitKey;
+    });
+  }
 
-    // Validación al enviar
-  form.addEventListener("submit", function (e) {
-    let valid = true;
-    fields.forEach((field) => {
-      const input = document.getElementById(field);
-      const value = input.value.trim();
-      const parent = input.parentNode;
-      const error = parent.querySelector(".error-label");
-      // Validations
-      if (!value) {
-        error.textContent = currentTranslations['error_required'] || "This field is required.";
-        error.style.display = "block";
-        valid = false;
-      } else if (
-        field === "email" &&
-        !/^[a-z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}$/i.test(value)
-      ) {
-        error.textContent = currentTranslations['error_invalid_email'] || "Invalid email format.";
-        error.style.display = "block";
-        valid = false;
-      } else if (value.length < config[field].min) {
-        error.textContent = (currentTranslations['error_min_chars'] || "Minimum {min} characters required.").replace('{min}', config[field].min);
-        error.style.display = "block";
-        valid = false;
-      } else if (value.length > config[field].max) {
-        error.textContent = (currentTranslations['error_max_chars'] || "Maximum {max} characters allowed.").replace('{max}', config[field].max);
-        error.style.display = "block";
-        valid = false;
-      } else if (!config[field].regex.test(value)) {
-        error.textContent = currentTranslations['error_invalid_chars'] || "Invalid characters detected.";
-        error.style.display = "block";
-        valid = false;
-      } else {
-        error.style.display = "none";
+  // Las traducciones llegan por <script> (i18n/es.js → window.I18N), no por fetch,
+  // así funcionan igual al abrir index.html con doble clic (file://).
+  function setLang(lang) {
+    const available = lang === "en" || Boolean(window.I18N && window.I18N[lang]);
+    if (available) {
+      storage.set("lang", lang);
+    } else {
+      console.warn(`El idioma "${lang}" no está disponible, se usa inglés.`);
+      lang = "en";
+    }
+    dict = lang === "en" ? {} : window.I18N[lang];
+    $$("[data-i18n]").forEach((el) => {
+      el.innerHTML = dict[el.dataset.i18n] ?? el.dataset.i18nDefault;
+    });
+    $$("[data-i18n-aria]").forEach((el) => {
+      el.setAttribute("aria-label", dict[el.dataset.i18nAria] ?? el.dataset.i18nAriaDefault);
+    });
+    document.title = dict.page_title ?? defaultTitle;
+    root.lang = lang;
+    if (langSwitcher) langSwitcher.value = lang;
+    updateDynamicText();
+    root.classList.remove("i18n-pending");
+    contactForm.refreshMessages();
+  }
+
+  /* ----------------------------------------------------------------- tema */
+  function initTheme() {
+    const button = $("#theme-toggle");
+    if (!button) return;
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+    button.addEventListener("click", () => {
+      const current = root.dataset.theme || (prefersDark.matches ? "dark" : "light");
+      const next = current === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      storage.set("theme", next);
+    });
+  }
+
+  /* ----------------------------------------------------------------- menú */
+  function initNavigation() {
+    const nav = $("#primary-nav");
+    const toggle = $(".mobile-menu");
+    if (!nav || !toggle) return;
+
+    const setOpen = (open) => {
+      nav.classList.toggle("show", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    };
+
+    toggle.addEventListener("click", () => setOpen(!nav.classList.contains("show")));
+    nav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) setOpen(false);
+    });
+    document.addEventListener("click", (event) => {
+      if (nav.classList.contains("show") && !event.target.closest(".site-header")) setOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("show")) {
+        setOpen(false);
+        toggle.focus();
       }
     });
 
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (!recaptchaResponse) {
-      e.preventDefault();
-      alert("Please complete the reCAPTCHA.");
-      return false;
-    }
-
-    if (!valid) {
-      e.preventDefault();
-      sendBtn.disabled = true;
-      return false;
-    }
-
-    // Si es válido, envía el formulario con EmailJS
-    e.preventDefault();
-    emailjs.sendForm("service_0pxmsh7", "template_y5l3mx4", this).then(
-      function () {
-        alert("Message sent successfully!");
+    // Marca en el menú la sección visible.
+    const links = $$('a[href^="#"]', nav);
+    const byId = new Map(links.map((link) => [link.getAttribute("href").slice(1), link]));
+    if (!("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          links.forEach((link) => link.removeAttribute("aria-current"));
+          byId.get(entry.target.id)?.setAttribute("aria-current", "true");
+        });
       },
-      function (error) {
-        alert("An error occurred. Please try again.");
-      }
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    byId.forEach((_, id) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+  }
+
+  /* ------------------------------------------------------------- diálogos */
+  function initDialogs() {
+    $$("[data-modal]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const dialog = document.getElementById(button.dataset.modal);
+        if (dialog && typeof dialog.showModal === "function") dialog.showModal();
+      });
+    });
+    // Un clic sobre el fondo (el propio <dialog>) lo cierra.
+    $$("dialog.modal").forEach((dialog) => {
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------ formulario */
+  const contactForm = (() => {
+    const form = $("#contact-form");
+    if (!form) return { refreshMessages() {} };
+
+    const LIMITS = {
+      name: { min: 2, max: 100 },
+      email: { min: 6, max: 100 },
+      subject: { min: 3, max: 100 },
+      message: { min: 10, max: 500 },
+    };
+    // Letras de cualquier idioma (tildes, ñ), números, espacios y puntuación común.
+    const TEXT_RE = /^[\p{L}\p{N}\s.,;:!?¡¿'"()\-_@#%&+/]+$/u;
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const STRIP_RE = /[{}[\]<>´`\\]/g;
+
+    const sendButton = $("#send-btn");
+    const clearButton = $("#clear-btn");
+    const statusEl = $("#form-status");
+    const fields = Object.fromEntries(
+      Object.keys(LIMITS).map((name) => [
+        name,
+        { input: $(`#${name}`), error: $(`#${name}-error`), count: $(`#${name}-count`), touched: false },
+      ])
     );
 
-    // Limpiar campos y feedback visual
-    this.reset();
-    fields.forEach((field) => {
-      const input = document.getElementById(field);
-      const parent = input.parentNode;
-      const error = parent.querySelector(".error-label");
-      const counter = parent.querySelector(".char-counter");
-      if (error) {
-        error.style.display = "none";
-        error.textContent = "";
-      }
-      if (counter) {
-        counter.textContent = `0 / ${config[field].max}`;
-        counter.style.color = "#888";
-      }
-      input.classList.remove("input-error");
-      input.classList.remove("input-success");
-    });
-    sendBtn.disabled = true;
-  });
+    function check(name) {
+      const { min, max } = LIMITS[name];
+      const value = fields[name].input.value.trim();
+      if (!value) return "error_required";
+      if (name === "email" && !EMAIL_RE.test(value)) return "error_invalid_email";
+      if (value.length < min) return "error_min_chars";
+      if (value.length > max) return "error_max_chars";
+      if (name !== "email" && !TEXT_RE.test(value)) return "error_invalid_chars";
+      return null;
+    }
 
-  // Evento para el botón de limpiar
-  const clearBtn = document.getElementById("clear-btn");
-  if (clearBtn) {
-    clearBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      
-      // Limpiar campos
+    function render(name, showError) {
+      const field = fields[name];
+      const { min, max } = LIMITS[name];
+      const problem = check(name);
+      const visible = showError && problem;
+      field.count.textContent = `${field.input.value.length} / ${max}`;
+      field.error.dataset.key = visible ? problem : "";
+      field.error.textContent = visible ? t(problem).replace("{min}", min).replace("{max}", max) : "";
+      field.input.classList.toggle("input-error", Boolean(visible));
+      field.input.classList.toggle("input-success", !problem && field.input.value.trim().length > 0);
+      field.input.setAttribute("aria-invalid", visible ? "true" : "false");
+    }
+
+    let statusKey = null;
+    function setStatus(key, state) {
+      statusKey = key;
+      statusEl.textContent = key ? t(key) : "";
+      if (key && state) statusEl.dataset.state = state;
+      else delete statusEl.dataset.state;
+    }
+
+    function resetFields() {
+      Object.keys(fields).forEach((name) => {
+        fields[name].touched = false;
+        render(name, false);
+        fields[name].input.classList.remove("input-success");
+      });
+    }
+
+    function resetCaptcha() {
+      try {
+        if (typeof grecaptcha !== "undefined") grecaptcha.reset();
+      } catch {
+        /* reCAPTCHA no disponible */
+      }
+    }
+
+    function captchaCompleted() {
+      try {
+        return typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length > 0;
+      } catch {
+        return false;
+      }
+    }
+
+    Object.entries(fields).forEach(([name, field]) => {
+      field.input.maxLength = LIMITS[name].max;
+      field.input.addEventListener("input", () => {
+        const cleaned = field.input.value.replace(STRIP_RE, "");
+        if (cleaned !== field.input.value) field.input.value = cleaned;
+        render(name, field.touched);
+      });
+      field.input.addEventListener("blur", () => {
+        field.touched = true;
+        render(name, true);
+      });
+      render(name, false);
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      let firstInvalid = null;
+      Object.keys(fields).forEach((name) => {
+        fields[name].touched = true;
+        render(name, true);
+        if (!firstInvalid && check(name)) firstInvalid = fields[name].input;
+      });
+      if (firstInvalid) {
+        setStatus(null);
+        firstInvalid.focus();
+        return;
+      }
+      // Campo trampa: las personas no lo ven; si llega relleno es un bot, se simula éxito y no se envía nada.
+      const trap = $("#website");
+      if (trap && trap.value.trim() !== "") {
+        form.reset();
+        resetFields();
+        setStatus("form_success", "success");
+        return;
+      }
+      if (!captchaCompleted()) {
+        setStatus("captcha_required", "error");
+        return;
+      }
+      if (typeof emailjs === "undefined") {
+        setStatus("form_error", "error");
+        return;
+      }
+      sendButton.disabled = true;
+      setStatus("form_sending", "info");
+      try {
+        await emailjs.sendForm(EMAILJS.service, EMAILJS.template, form);
+        form.reset();
+        resetFields();
+        setStatus("form_success", "success");
+      } catch (error) {
+        console.error(error);
+        setStatus("form_error", "error");
+      } finally {
+        sendButton.disabled = false;
+        resetCaptcha();
+      }
+    });
+
+    clearButton.addEventListener("click", () => {
       form.reset();
-      
-      // Limpiar errores, contadores y estilos
-      fields.forEach((field) => {
-        const input = document.getElementById(field);
-        const parent = input.parentNode;
-        const error = parent.querySelector(".error-label");
-        const counter = parent.querySelector(".char-counter");
-        
-        if (error) {
-          error.style.display = "none";
-          error.textContent = "";
-        }
-        if (counter) {
-          counter.textContent = `0 / ${config[field].max}`;
-          counter.style.color = "#888";
-        }
-        input.classList.remove("input-error");
-        input.classList.remove("input-success");
-      });
-      
-      sendBtn.disabled = true;
-      
-      // Limpiar reCAPTCHA
-      grecaptcha.reset();
+      resetFields();
+      setStatus(null);
+      resetCaptcha();
     });
+
+    return {
+      // Vuelve a escribir los mensajes visibles cuando cambia el idioma.
+      refreshMessages() {
+        Object.keys(fields).forEach((name) => render(name, fields[name].touched));
+        setStatus(statusKey, statusEl.dataset.state);
+      },
+    };
+  })();
+
+  /* ---------------------------------------------------------------- inicio */
+  // blockHeadless y limitRate frenan el uso automatizado; la protección real debe estar también en el panel de EmailJS.
+  if (typeof emailjs !== "undefined") {
+    emailjs.init({ publicKey: EMAILJS.publicKey, blockHeadless: true, limitRate: { id: "contact-form", throttle: 15000 } });
   }
+  initTheme();
+  initNavigation();
+  initDialogs();
+  storeDefaults();
+  updateDynamicText();
 
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  function moveLangSwitcher() {
-    const navUl = document.querySelector("nav ul");
-    const langSwitcher = document.getElementById("lang-switcher");
-    if (window.innerWidth <= 600) {
-      if (navUl && langSwitcher && !navUl.contains(langSwitcher)) {
-        const li = document.createElement("li");
-        li.id = "lang-switcher-li";
-        li.appendChild(langSwitcher);
-        navUl.appendChild(li);
-      }
-    } else {
-      // Devuelve el selector a su lugar original si es necesario
-      const headerContainer = document.querySelector(".header-container");
-      const langLi = document.getElementById("lang-switcher-li");
-      if (headerContainer && langLi && langLi.contains(langSwitcher)) {
-        headerContainer.appendChild(langSwitcher);
-        langLi.remove();
-      }
-    }
+  const saved = storage.get("lang");
+  const preferred = (navigator.language || "en").toLowerCase().startsWith("es") ? "es" : "en";
+  const initial = saved === "en" || saved === "es" ? saved : preferred;
+  if (langSwitcher) {
+    langSwitcher.value = initial;
+    langSwitcher.addEventListener("change", (event) => setLang(event.target.value));
   }
-  moveLangSwitcher();
-  window.addEventListener("resize", moveLangSwitcher);
-});
-// Traducción automática
-const langSwitcher = document.getElementById('lang-switcher');
-const defaultLang = 'en';
-
-// Función para traducir mensajes de error visibles
-function updateVisibleErrors() {
-  const fields = ["name", "email", "subject", "message"];
-  const config = {
-    name: { min: 10, max: 100 },
-    email: { min: 10, max: 100 },
-    subject: { min: 10, max: 100 },
-    message: { min: 10, max: 250 },
-  };
-
-  fields.forEach((field) => {
-    const input = document.getElementById(field);
-    const parent = input.parentNode;
-    const error = parent.querySelector(".error-label");
-
-    // Si hay un error visible, traducirlo
-    if (error && error.style.display !== "none" && error.textContent) {
-      const value = input.value.trim();
-
-      // Determinar qué tipo de error es y traducir
-      if (!value) {
-        error.textContent = currentTranslations['error_required'] || "This field is required.";
-      } else if (
-        field === "email" &&
-        !/^[a-z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}$/i.test(value)
-      ) {
-        error.textContent = currentTranslations['error_invalid_email'] || "Invalid email format.";
-      } else if (value.length < config[field].min) {
-        error.textContent = (currentTranslations['error_min_chars'] || "Minimum {min} characters required.").replace('{min}', config[field].min);
-      } else if (value.length > config[field].max) {
-        error.textContent = (currentTranslations['error_max_chars'] || "Maximum {max} characters allowed.").replace('{max}', config[field].max);
-      } else if (field === "email" && !/^[a-z0-9.\-_]+@[a-z0-9.\-_]+\.[a-z]{2,}$/i.test(value)) {
-        error.textContent = currentTranslations['error_invalid_email'] || "Invalid email format.";
-      } else {
-        error.textContent = currentTranslations['error_invalid_chars'] || "Invalid characters detected.";
-      }
-    }
-  });
-}
-
-function setLang(lang) {
-  if (lang === 'en') {
-    // Restaurar textos por defecto (inglés)
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      // Puedes guardar el texto original en un atributo al cargar la página
-      if (el.hasAttribute('data-i18n-default')) {
-        el.innerHTML = el.getAttribute('data-i18n-default');
-      }
-    });
-    currentTranslations = {}; // Limpiar traducciones (usaremos valores por defecto en inglés)
-    // Actualizar mensajes de error visibles inmediatamente para inglés
-    updateVisibleErrors();
-    // Actualizar años después de cambiar idioma
-    updateYearsOfExperience();
-  } else {
-    fetch(`i18n/${lang}.json`)
-      .then(res => res.json())
-      .then(dict => {
-        currentTranslations = dict; // Guardar las traducciones globalmente
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
-          if (dict[key]) el.innerHTML = dict[key];
-        });
-        // Actualizar mensajes de error visibles después de que las traducciones se carguen
-        updateVisibleErrors();
-        // Actualizar años después de cambiar idioma
-        updateYearsOfExperience();
-      });
-  }
-  
-  localStorage.setItem('lang', lang);
-}
-
-// Guardar los textos por defecto al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-  // Actualizar años de experiencia ANTES de guardar el texto por defecto
-  updateYearsOfExperience();
-  
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    if (!el.hasAttribute('data-i18n-default')) {
-      el.setAttribute('data-i18n-default', el.innerHTML);
-    }
-  });
-});
-
-if (langSwitcher) {
-  langSwitcher.value = localStorage.getItem('lang') || defaultLang;
-  langSwitcher.addEventListener('change', e => setLang(e.target.value));
-  setLang(langSwitcher.value);
-} else {
-  setLang(defaultLang);
-}
+  setLang(initial);
+})();

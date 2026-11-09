@@ -4,912 +4,570 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Francisco Cabezas - QA Automation Engineer Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧳</text></svg>">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-QhWiMxq0Q7qpvwWCsVnn+kDgQ/t8a+frUAhEK4z1m/A=' https://cdn.jsdelivr.net https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https://www.gstatic.com https://www.google.com; connect-src 'self' https://api.emailjs.com https://www.google.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Francisco Cabezas | AI-First QA Automation Engineer</title>
+  <meta name="description" content="AI-first QA Automation Engineer. I test AI systems (LLMs, agents, RAG), apply OWASP security testing, and use AI to build faster, more reliable test automation with Playwright, Cypress and CI/CD." />
+  <meta name="theme-color" content="#f1f4f3" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c1214" media="(prefers-color-scheme: dark)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Francisco Cabezas | AI-First QA Automation Engineer" />
+  <meta property="og:description" content="I test AI systems, and I use AI to test better. LLM evaluation, OWASP security testing and AI-assisted test automation." />
+  <script>
+    (function () {
+      var d = document.documentElement;
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "dark" || t === "light") d.setAttribute("data-theme", t);
+      } catch (e) { }
+      // Si se va a mostrar en español, la página espera a la traducción para no saltar de inglés a español.
+      try {
+        var l = localStorage.getItem("lang");
+        if (!l) l = (navigator.language || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en";
+        if (l === "es") {
+          d.classList.add("i18n-pending");
+          setTimeout(function () { d.classList.remove("i18n-pending"); }, 2500);
+        }
+      } catch (e) { }
+    })();
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231e4fd6'/><text x='32' y='42' font-size='27' font-family='monospace' font-weight='700' text-anchor='middle' fill='white'>QA</text></svg>" />
   <link rel="stylesheet" href="styles.css" />
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
-  <!-- Header -->
-  <header>
+  <a class="skip-link" href="#main" data-i18n="skip_to_content">Skip to content</a>
+
+  <header class="site-header">
     <div class="container header-container">
-      <div class="logo">Q<span>A</span></div>
-      <nav>
+      <a class="logo" href="#top">QA<span>/AI</span></a>
+      <nav id="primary-nav" aria-label="Main">
         <ul>
           <li><a href="#about" data-i18n="about">About</a></li>
+          <li><a href="#ai-first" data-i18n="ai_first_nav">AI-First</a></li>
+          <li><a href="#security" data-i18n="security_nav">Security</a></li>
           <li><a href="#skills" data-i18n="skills">Skills</a></li>
           <li><a href="#experience" data-i18n="experience">Experience</a></li>
           <li><a href="#projects" data-i18n="projects">Projects</a></li>
           <li><a href="#certifications" data-i18n="certifications">Certifications</a></li>
-          <li><a href="#achievements" data-i18n="achievements">Achievements</a></li>
           <li><a href="#contact" data-i18n="contact">Contact</a></li>
         </ul>
       </nav>
-      <div class="mobile-menu">
-        <i class="fas fa-bars"></i>
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle color theme" data-i18n-aria="toggle_theme">
+          <i class="fas fa-moon icon-moon" aria-hidden="true"></i><i class="fas fa-sun icon-sun" aria-hidden="true"></i>
+        </button>
+        <select id="lang-switcher" aria-label="Language" data-i18n-aria="lang_label">
+          <option value="en" data-i18n="lang_en">English</option>
+          <option value="es" data-i18n="lang_es">Spanish</option>
+        </select>
+        <button class="mobile-menu icon-btn" type="button" aria-label="Open menu" data-i18n-aria="toggle_menu" aria-expanded="false" aria-controls="primary-nav">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
       </div>
-      <select id="lang-switcher">
-        <option value="en" data-i18n="lang_en">English</option>
-        <option value="es" data-i18n="lang_es">Spanish</option>
-      </select>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1><span>Francisco</span> <span>Cabezas</span></h1>
-        <h2>QA Automation Engineer</h2>
-        <p data-i18n="hero_experience">
-          <span class="years-experience">5</span>+ years of experience in test automation, CI/CD integration, and quality engineering for scalable digital products
-        </p>
-        <div class="hero-quote" data-i18n="hero_quote">
-          Transforming quality assurance through automation frameworks, AI-powered testing, and DevOps practices to accelerate reliable software delivery.
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">AI-First QA Automation Engineer</p>
+          <h1>Francisco Cabezas</h1>
+          <p class="hero-thesis" data-i18n="hero_thesis">I test AI systems, and I use AI to test better.</p>
+          <p class="hero-lede" data-i18n="hero_experience"><span class="years-experience">6</span>+ years in QA automation and CI/CD, now focused on AI products: LLM validation, chatbots on WhatsApp and social channels, and security.</p>
+          <ul class="hero-tags">
+            <li>Playwright</li><li>Cypress</li><li>TypeScript</li><li>Python</li><li>CI/CD</li><li>LLM Testing</li><li>Chatbots</li><li>OWASP</li>
+          </ul>
+          <div class="hero-actions">
+            <a href="#contact" class="btn" data-i18n="get_in_touch">Get In Touch</a>
+            <a href="#ai-first" class="btn btn-ghost" data-i18n="see_ai_approach">See my AI-first approach</a>
+          </div>
         </div>
-        <a href="#contact" class="btn" data-i18n="get_in_touch">Get In Touch</a>
+
+        <figure class="report">
+          <div class="report-head"><span class="report-prompt">$ qa gate --suite support-agent</span></div>
+          <ul class="report-rows">
+            <li><span class="st pass">PASS</span><span class="rname">groundedness</span><span class="rval">0.94</span><span class="rthr">&ge; 0.90</span></li>
+            <li><span class="st pass">PASS</span><span class="rname">prompt-injection</span><span class="rval">12/12</span><span class="rthr">blocked</span></li>
+            <li><span class="st pass">PASS</span><span class="rname">tool-calls</span><span class="rval">9/9</span><span class="rthr">valid</span></li>
+            <li><span class="st pass">PASS</span><span class="rname">p95-latency</span><span class="rval">1.8s</span><span class="rthr">&le; 2.5s</span></li>
+            <li><span class="st fail">FAIL</span><span class="rname">consistency</span><span class="rval">8/10</span><span class="rthr">&ge; 9/10</span></li>
+          </ul>
+          <p class="report-verdict"><span class="st fail">BLOCKED</span><span data-i18n="report_verdict">Release blocked: consistency is below the threshold.</span></p>
+          <figcaption class="report-caption" data-i18n="report_caption">Illustrative example of an AI quality gate, not real project data.</figcaption>
+        </figure>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <h2 class="text-center" data-i18n="professional_profile">Professional Profile</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p data-i18n="about_1">
-            QA Automation Engineer with <span class="years-experience">5</span>+ years of experience specializing in end-to-end test automation, API testing, and continuous integration. I design, develop, and maintain robust automation frameworks using Cypress, Playwright, and Selenium to ensure comprehensive test coverage and accelerate release cycles.
-          </p>
-          <p data-i18n="about_2">
-            I excel at implementing strategic automation solutions that optimize regression testing, integrate seamlessly with CI/CD pipelines (GitHub Actions, Docker, AWS), and leverage AI-Assisted Testing techniques including LLM Testing and Model Context Protocol (MCP) for enhanced validation of AI-powered applications. My approach combines modern testing methodologies with performance optimization and infrastructure as code practices.
-          </p>
-          <p data-i18n="about_3">
-            I am deeply committed to advancing test automation maturity, exploring cutting-edge testing technologies, and applying ISTQB best practices to establish scalable QA processes. My goal is to build reliable, maintainable automation suites that enable teams to deliver high-quality software with confidence and speed.
-          </p>
+    <!-- About -->
+    <section id="about" class="section about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <h2 class="section-title" data-i18n="professional_profile">Professional Profile</h2>
+            <p data-i18n="about_1">QA Automation Engineer with <span class="years-experience">6</span>+ years building E2E and API test suites with Playwright, Cypress and Selenium and shipping them through CI/CD. Today I focus on AI-powered products and chatbots on WhatsApp and social channels: I turn fuzzy LLM behavior into measurable checks and use AI to write and maintain better tests.</p>
+            <p data-i18n="about_2">I see QA moving from running tests to designing quality systems: defining what “correct” means for non-deterministic software, automating the evidence and keeping a human in the loop.</p>
+          </div>
+          <div class="about-image">
+            <img src="assets/profile.jpg" alt="Francisco Cabezas" width="800" height="800" loading="eager" />
+          </div>
         </div>
-        <div class="about-image">
-          <img src="assets\28EE70DC-5471-4C1E-9234-BF74BECE5E42.JPG" alt="Francisco Cabezas" />
+
+        <h3 class="subsection-title" data-i18n="practice_title">How I work</h3>
+        <div class="practice">
+          <article class="practice-card"><h4 data-i18n="pr1_title">Shift-left</h4><p data-i18n="pr1_desc">Tickets reviewed for gaps before QA starts, and a short self-check for developers.</p></article>
+          <article class="practice-card"><h4 data-i18n="pr2_title">Evidence-based sign-off</h4><p data-i18n="pr2_desc">No acceptance criterion passes without evidence, severity and traceability.</p></article>
+          <article class="practice-card"><h4 data-i18n="pr3_title">Failure-pattern catalog</h4><p data-i18n="pr3_desc">Recurring failures and root causes, including security lessons, feed each release.</p></article>
+          <article class="practice-card"><h4 data-i18n="pr4_title">Privacy by default</h4><p data-i18n="pr4_desc">No personal data in evidence or reports; credentials come from environment variables.</p></article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="skills">
-    <div class="container">
-      <h2 class="text-center mb-30" data-i18n="technical_skills">Technical Skills</h2>
-      <div class="skills-grid">
-        <!-- Cloud Platforms - CI/CD -->
-        <div class="skill-category">
-          <h3><i class="fas fa-cloud"></i> <span data-i18n="cloud_platforms">Cloud Platforms - CI/CD</span></h3>
-          <div class="skill-item">
-            <span>Google Cloud Platform</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
+    <!-- AI-first -->
+    <section id="ai-first" class="section ai-first" aria-labelledby="ai-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="ai_first_eyebrow">What QA teams ask for now</p>
+          <h2 id="ai-title" class="section-title" data-i18n="ai_first_title">AI-First Quality Engineering</h2>
+          <p class="lead" data-i18n="ai_first_intro">Two skills: testing AI-powered products, and using AI to test faster. A person reviews every result.</p>
+        </div>
+
+        <div class="pillars">
+          <article class="pillar">
+            <i class="fas fa-brain pillar-icon" aria-hidden="true"></i>
+            <h3 data-i18n="p1_title">Testing AI systems</h3>
+            <ul><li data-i18n="p1_li1">Golden datasets and prompt regression</li><li data-i18n="p1_li2">Groundedness and hallucination checks (RAG)</li><li data-i18n="p1_li3">Prompt injection, jailbreak and guardrail tests</li><li data-i18n="p1_li4">Chatbot and agent validation on WhatsApp and social channels: multi-turn flows, tool calls</li><li data-i18n="p1_li5">Typed AI judgments (TypeSafe Jev) as probabilistic assertions with confidence thresholds</li></ul>
+          </article>
+          <article class="pillar">
+            <i class="fas fa-wand-magic-sparkles pillar-icon" aria-hidden="true"></i>
+            <h3 data-i18n="p2_title">Testing with AI</h3>
+            <ul><li data-i18n="p2_li1">Test generation from requirements (Copilot, MCP)</li><li data-i18n="p2_li2">Agentic Playwright suites: planner, generator, healer</li><li data-i18n="p2_li3">Failure and flaky-test triage with LLMs</li><li data-i18n="p2_li4">Claude Code with project skills, review subagents and hooks</li></ul>
+          </article>
+          <article class="pillar">
+            <i class="fas fa-shield-halved pillar-icon" aria-hidden="true"></i>
+            <h3 data-i18n="p3_title">Quality gates</h3>
+            <ul><li data-i18n="p3_li1">Evals as CI/CD gates: deploy blocked if a metric drops</li><li data-i18n="p3_li2">Latency and token-cost budgets</li><li data-i18n="p3_li3">Production monitoring and drift</li><li data-i18n="p3_li4">Risk-based testing (ISTQB)</li></ul>
+          </article>
+        </div>
+
+        <div class="loop">
+          <h3 class="block-title" data-i18n="wf_title">My AI-assisted test loop</h3>
+          <ol class="loop-steps">
+            <li><strong data-i18n="wf1">Plan</strong><span data-i18n="wf1_d">An agent proposes scenarios.</span></li>
+            <li><strong data-i18n="wf2">Generate</strong><span data-i18n="wf2_d">Scenarios become Playwright tests.</span></li>
+            <li><strong data-i18n="wf3">Review</strong><span data-i18n="wf3_d">I check coverage and assertions.</span></li>
+            <li><strong data-i18n="wf4">Gate</strong><span data-i18n="wf4_d">CI stops the release on failure.</span></li>
+            <li><strong data-i18n="wf5">Observe</strong><span data-i18n="wf5_d">Production feeds new tests.</span></li>
+          </ol>
+        </div>
+
+        <div class="ai-split">
+          <div class="eval">
+            <h3 class="block-title" data-i18n="eval_title">How I define “correct” for non-deterministic software</h3>
+            <dl class="eval-list">
+              <div class="eval-row"><dt data-i18n="eval_1">Correctness</dt><dd data-i18n="eval_1_d">Answers checked against a source of truth; LLM judges calibrated by humans.</dd></div>
+              <div class="eval-row"><dt data-i18n="eval_2">Safety and security</dt><dd data-i18n="eval_2_d">Prompt injection, data disclosure, prompt leakage, excessive agency (OWASP LLM 2025).</dd></div>
+              <div class="eval-row"><dt data-i18n="eval_3">Consistency</dt><dd data-i18n="eval_3_d">Same input run several times against a minimum pass rate.</dd></div>
+              <div class="eval-row"><dt data-i18n="eval_4">Tool use</dt><dd data-i18n="eval_4_d">Right tool, arguments and order, checked on traces.</dd></div>
+              <div class="eval-row"><dt data-i18n="eval_5">Performance and cost</dt><dd data-i18n="eval_5_d">Latency percentiles and token budgets.</dd></div>
+            </dl>
           </div>
-          <div class="skill-item">
-            <span>Amazon Web Services</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>GitHub Actions</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Azure DevOps</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-          <div class="skill-item">
-            <span>Bitbucket</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-          <div class="skill-item">
-            <span>Jenkins</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
+
+          <div class="callouts">
+            <aside class="callout">
+              <h3 class="block-title" data-i18n="ci_title">AI in my own pipeline</h3>
+              <p data-i18n="ci_text">When an E2E job fails in CI, a vision model reads the Playwright report, screenshots and git diff, classifies the failure as regression or flaky, and replies in the Slack alert thread. It runs only on real failures and caps prompt size to control cost.</p>
+              <ul class="flow-chips">
+                <li data-i18n="ci_in1">Playwright report</li><li data-i18n="ci_in2">Screenshots</li><li data-i18n="ci_in3">Git diff</li>
+                <li class="flow-out" data-i18n="ci_out">Verdict in Slack</li>
+              </ul>
+            </aside>
+            <aside class="callout">
+              <h3 class="block-title" data-i18n="cc_title">Claude Code in my workflow</h3>
+              <p data-i18n="cc_text">My repos ship a Claude Code setup: review subagents (security, migrations, API routes, tests), hooks for test coverage, Playwright best practices, path guards and Supabase advisors, and project skills for QA preflight, test-suite sync and E2E generation.</p>
+              <ul class="flow-chips plain-chips">
+                <li data-i18n="cc_c1">Subagents</li><li>Hooks</li><li>Skills</li><li data-i18n="cc_c4">MCP server</li>
+              </ul>
+            </aside>
           </div>
         </div>
 
-        <!-- Programming -->
-        <div class="skill-category">
-          <h3><i class="fas fa-code"></i> <span data-i18n="programming">Programming languages</span></h3>
-          <div class="skill-item">
-            <span>TypeScript</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>JavaScript</span>
-            <span class="skill-years">4 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Python</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Java</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-          <div class="skill-item">
-            <span>SQL</span>
-            <span class="skill-years">5 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
+        <div class="ai-foot">
+          <p class="principle" data-i18n="ai_principle">AI proposes, I verify. Nothing a model generates ships without review.</p>
+          <div class="stack">
+            <span class="stack-label" data-i18n="ai_stack_label">In my AI workflow</span>
+            <ul class="chip-row">
+              <li>Claude Code</li><li>GitHub Copilot</li><li>MCP SDK</li><li>TypeSafe (Jev)</li><li>OpenAI API</li><li>Playwright</li><li>Lighthouse CI</li><li>GitHub Actions</li>
+            </ul>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Database Managers -->
-        <div class="skill-category">
-          <h3><i class="fas fa-database"></i> <span data-i18n="databases">Databases</span></h3>
-          <div class="skill-item">
-            <span>MongoDB</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>PostgreSQL</span>
-            <span class="skill-years">4 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>MySQL</span>
-            <span class="skill-years">4 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Supabase</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>DBeaver</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>SQL Management Studio</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
+    <!-- Security -->
+    <section id="security" class="section security" aria-labelledby="sec-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="sec_eyebrow">Security is part of quality</p>
+          <h2 id="sec-title" class="section-title" data-i18n="sec_title">Security Testing, from Web to LLMs</h2>
+          <p class="lead" data-i18n="sec_intro">OWASP lists as a map, from access control and injection to prompt injection and excessive agency.</p>
         </div>
 
-        <!-- Testing Tools -->
-        <div class="skill-category">
-          <h3><i class="fas fa-tools"></i> <span data-i18n="testing_tools">Testing Tools</span></h3>
-          <div class="skill-item">
-            <span>Postman</span>
-            <span class="skill-years">5 <span data-i18n="years">years</span></span>
+        <div class="sec-grid">
+          <article class="sec-col">
+            <p class="sec-tag" data-i18n="sec_web_tag">OWASP Top 10:2025</p>
+            <h3 data-i18n="sec_web_title">Web and API</h3>
+            <ul><li data-i18n="sec_web_1">Broken access control: roles, row-level security, cross-user tests</li><li data-i18n="sec_web_2">Injection and XSS through forms, queries and stored content</li><li data-i18n="sec_web_3">Authentication: JWT, sessions, expiry, httpOnly cookies</li><li data-i18n="sec_web_4">Misconfiguration: security headers, CSRF, secrets out of code</li><li data-i18n="sec_web_5">Supply chain: review of new dependencies</li></ul>
+          </article>
+          <article class="sec-col">
+            <p class="sec-tag" data-i18n="sec_llm_tag">OWASP LLM Top 10 · 2025</p>
+            <h3 data-i18n="sec_llm_title">LLM applications</h3>
+            <ul><li data-i18n="sec_llm_1">LLM01 Prompt injection, direct and indirect</li><li data-i18n="sec_llm_2">LLM02 Sensitive data in answers, traces and logs</li><li data-i18n="sec_llm_3">LLM05 Model output rendered or executed unvalidated</li><li data-i18n="sec_llm_4">LLM07 System prompt leakage</li><li data-i18n="sec_llm_5">LLM09 / LLM10 Misinformation and unbounded consumption</li></ul>
+          </article>
+          <article class="sec-col">
+            <p class="sec-tag" data-i18n="sec_agent_tag">OWASP Agentic Top 10 · 2026</p>
+            <h3 data-i18n="sec_agent_title">Agents and MCP</h3>
+            <ul><li data-i18n="sec_agent_1">Excessive agency (LLM06): least-privilege tools</li><li data-i18n="sec_agent_2">Goal hijack: external text is data, never instructions</li><li data-i18n="sec_agent_3">Tool misuse: argument validation and authorization per call</li><li data-i18n="sec_agent_4">MCP servers: authentication and tool-scope review</li><li data-i18n="sec_agent_5">Human approval before irreversible actions</li></ul>
+          </article>
+        </div>
+
+        <div class="evidence">
+          <h3 class="block-title" data-i18n="sec_evidence_title">Where I have applied it</h3>
+          <ul>
+            <li data-i18n="sec_ev1">RLS, JWT sessions, AES-256-GCM encrypted keys and a bearer-protected cron in a Next.js and Supabase app, reviewed by a read-only security agent.</li><li data-i18n="sec_ev2">Pre-ship audits of conversational bots: exposed credentials, data leaks, money safety, prompt injection.</li><li data-i18n="sec_ev3">Secure test setup in Playwright: credentials from environment variables, reports checked for leaked secrets.</li><li data-i18n="sec_ev4">Adversarial lessons from identity-verification (KYC) incidents, stored without personal data.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section skills">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-i18n="technical_skills">Technical Skills</h2>
+          <p class="lead" data-i18n="skills_intro">What I use, with years of experience.</p>
+          <p class="skill-legend">
             <span class="skill-level level-expert" data-i18n="expert">Expert</span>
-          </div>
-          <div class="skill-item">
-            <span>Insomnia</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
             <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Rest Assured</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
             <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-          <div class="skill-item">
-            <span>Soap UI</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-          <div class="skill-item">
-            <span>Jest</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-        </div>
-
-        <!-- Test Management -->
-        <div class="skill-category">
-          <h3><i class="fas fa-vial"></i> <span data-i18n="test_management">Test Management</span></h3>
-          <div class="skill-item">
-            <span>Notion</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
-          </div>
-          <div class="skill-item">
-            <span>Trello</span>
-            <span class="skill-years">4 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
-          </div>
-          <div class="skill-item">
-            <span>ClickUp</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
-          </div>
-          <div class="skill-item">
-            <span>Xray</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>JIRA</span>
-            <span class="skill-years">4 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-        </div>
-
-        <!-- Performance tools -->
-        <div class="skill-category">
-          <h3><i class="fas fa-tachometer"></i> <span data-i18n="performance_tools">Performance tools</span></h3>
-          <div class="skill-item">
-            <span>Postman Performance</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
-          </div>
-          <div class="skill-item">
-            <span>JMeter</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>BlazeMeter</span>
-            <span class="skill-years">1 <span data-i18n="year">year</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-        </div>
-
-        <!-- AI-Assisted Tools -->
-        <div class="skill-category">
-          <h3><i class="fas fa-brain"></i> <span data-i18n="ai_tools">AI-Assisted Tools</span></h3>
-          <div class="skill-item">
-            <span>GitHub Copilot</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Model Context Protocol (MCP)</span>
-            <span class="skill-years">1 <span data-i18n="year">year</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>AI-Assisted Testing</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>LLM Testing</span>
-            <span class="skill-years">1 <span data-i18n="year">year</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-        </div>
-
-        <!-- Test Automation Patterns -->
-        <div class="skill-category">
-          <h3><i class="fas fa-vials"></i> <span data-i18n="test_automation_patterns">Test Automation Patterns</span>
-          </h3>
-          <div class="skill-item">
-            <span>Page Object Model (POM)</span>
-            <span class="skill-years">4 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
-          </div>
-          <div class="skill-item">
-            <span>Data-Driven Testing (DDT)</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Behavior-Driven Development (BDD)</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Screenplay Pattern</span>
-            <span class="skill-years">1 <span data-i18n="year">year</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-        </div>
-
-        <!-- Automation framework -->
-        <div class="skill-category">
-          <h3><i class="fas fa-robot"></i> <span data-i18n="automation_framework">Automation framework</span></h3>
-          <div class="skill-item">
-            <span>Playwright</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Cypress</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Selenium WebDriver</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-          <div class="skill-item">
-            <span>Serenity BDD</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-          <div class="skill-item">
-            <span>Cucumber</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-          <div class="skill-item">
-            <span>Appium</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-        </div>
-
-        <!-- Office Tools -->
-        <div class="skill-category">
-          <h3><i class="fas fa-file-excel"></i> <span data-i18n="office_tools">Office Tools</span></h3>
-          <div class="skill-item">
-            <span>Excel</span>
-            <span class="skill-years">3 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Excel Macros (VBA)</span>
-            <span class="skill-years">2 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-intermediate" data-i18n="intermediate">Intermediate</span>
-          </div>
-        </div>
-
-        <!-- Methodologies -->
-        <div class="skill-category">
-          <h3><i class="fas fa-project-diagram"></i> <span data-i18n="methodologies">Methodologies</span></h3>
-          <div class="skill-item">
-            <span data-i18n="agile">Agile</span>
-            <span class="skill-years">5 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-expert" data-i18n="expert">Expert</span>
-          </div>
-          <div class="skill-item">
-            <span>Scrum</span>
-            <span class="skill-years">5 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-          <div class="skill-item">
-            <span>Kanban</span>
-            <span class="skill-years">4 <span data-i18n="years">years</span></span>
-            <span class="skill-level level-advanced" data-i18n="advanced">Advanced</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testing Experience Section -->
-  <section id="testing-experience" class="skills">
-    <div class="container">
-      <h2 class="text-center mb-30" data-i18n="testing_experience">Testing Experience</h2>
-      <div class="skills-grid">
-        <div class="skill-category">
-          <h3><i class="fas fa-check-square"></i> <span data-i18n="functional_tests">Functional Tests</span></h3>
-          <div class="skill-item">
-            <span data-i18n="functional_tests_desc"> Verifies that the software correctly performs
-              each of its functions according to the established requirements.
-            </span>
-          </div>
-          <div class="center-btn">
-            <label for="modal-functional" class="btn btn-modal" data-i18n="see_testing_technique">
-              See Testing Technique
-            </label>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3><i class="fas fa-cogs"></i> <span data-i18n="nonfunctional_tests">Non-functional Tests</span></h3>
-          <div class="skill-item">
-            <span data-i18n="nonfunctional_tests_desc">Evaluates aspects such as performance, usability, reliability,
-              and security of the application.</span>
-          </div>
-          <div class="center-btn">
-            <label for="modal-nonfunctional" class="btn btn-modal" data-i18n="see_testing_technique">
-              See Testing Technique
-            </label>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3><i class="fas fa-th-large"></i> <span data-i18n="black_box_testing">Black Box Testing</span></h3>
-          <div class="skill-item">
-            <span data-i18n="black_box_testing_desc">Focuses on testing the application's functionality without
-              knowledge of internal code or structure.</span>
-          </div>
-          <div class="center-btn">
-            <label for="modal-blackbox" class="btn btn-modal" data-i18n="see_testing_technique">
-              See Testing Technique
-            </label>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3><i class="fas fa-code-branch"></i> <span data-i18n="white_box_testing">White Box Testing</span></h3>
-          <div class="skill-item">
-            <span data-i18n="white_box_testing_desc">Involves testing internal structures or workings of an
-              application, such as code, branches, and paths.</span>
-          </div>
-          <div class="center-btn">
-            <label for="modal-whitebox" class="btn btn-modal" data-i18n="see_testing_technique">
-              See Testing Technique
-            </label>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3><i class="fas fa-file-alt"></i> <span data-i18n="test_documentation">Test Documentation</span></h3>
-          <div class="skill-item">
-            <span data-i18n="test_documentation_desc">Creation and maintenance of test plans, cases, scripts, and
-              reports to ensure traceability and coverage.</span>
-          </div>
-          <div class="center-btn">
-            <label for="modal-documentation" class="btn btn-modal" data-i18n="see_testing_technique">
-              See Testing Technique
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" class="experience">
-    <div class="container">
-      <h2 class="text-center mb-30" data-i18n="work_experience">Work Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-date" data-i18n="jelou_date">February 2023 - Present</span>
-            <h3>QA Analyst</h3>
-            <h4>Jelou <span class="location">| Ecuador</span></h4>
-            <p data-i18n="jelou_summary">Responsible for manual and automated testing of AI-driven conversational products. Led the design and execution of E2E automation suites (Cypress, Playwright), implemented API testing, and contributed to the validation of AI models using LLM Testing and Model Context Protocol (MCP). Collaborated in the optimization of QA processes and CI/CD pipelines with Docker and AWS.</p>
-            <h5 data-i18n="responsibilities">Responsibilities</h5>
-            <ul>
-              <li data-i18n="jelou_resp1">Manual and automated testing for functional, regression, and API validation.</li>
-              <li data-i18n="jelou_resp2">Development and maintenance of E2E automation suites with Cypress and Playwright.</li>
-              <li data-i18n="jelou_resp3">Validation of AI models using LLM Testing and MCP methodologies.</li>
-              <li data-i18n="jelou_resp4">Process improvement and QA workflow optimization in CI/CD environments.</li>
-            </ul>
-            <h5 data-i18n="achievements">Achievements</h5>
-            <ul>
-              <li data-i18n="jelou_achv1">Reduced regression testing time by 40% through automation and parallel execution.</li>
-              <li data-i18n="jelou_achv2">Decreased critical production incidents by 30% by strengthening pre-release validation and automated smoke tests.</li>
-              <li data-i18n="jelou_achv3">Increased test coverage by 35% through strategic automation and AI model validation.</li>
-            </ul>
-            <div class="project-tags">
-              <span class="project-tag">Playwright</span>
-              <span class="project-tag">Cypress</span>
-              <span class="project-tag">Postman</span>
-              <span class="project-tag">Docker</span>
-              <span class="project-tag">CI/CD</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-date" data-i18n="houm_date">May 2022 - November 2022</span>
-            <h3>QA Engineer</h3>
-            <h4>Houm <span class="location">| Colombia</span></h4>
-            <p data-i18n="houm_summary">Participated in the design, execution, and automation of tests for a real estate technology platform. Developed and maintained E2E automation frameworks with Cypress, implemented API test automation with Postman, and contributed to the integration of automated tests in CI/CD pipelines. Supported the QA team in optimizing regression and functional testing processes.</p>
-            <h5 data-i18n="responsibilities">Responsibilities</h5>
-            <ul>
-              <li data-i18n="houm_resp1">Developed and executed automated and manual test suites for core business flows.</li>
-              <li data-i18n="houm_resp2">Maintained E2E automation frameworks using Cypress and page object model.</li>
-              <li data-i18n="houm_resp3">Automated API tests with Postman and Newman integrated into CI/CD.</li>
-            </ul>
-            <h5 data-i18n="achievements">Achievements</h5>
-            <ul>
-              <li data-i18n="houm_achv1">Reduced regression testing time by 30% through E2E automation and improved test coverage.</li>
-              <li data-i18n="houm_achv2">Decreased recurring defects by 25% by implementing automated regression suites and early defect detection.</li>
-              <li data-i18n="houm_achv3">Improved lead verification accuracy by automating complex validation workflows and using data-driven testing.</li>
-            </ul>
-            <div class="project-tags">
-              <span class="project-tag">Cypress</span>
-              <span class="project-tag">Postman</span>
-              <span class="project-tag">E2E</span>
-              <span class="project-tag">CI/CD</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-date" data-i18n="zabud_date">January 2020 - May 2022</span>
-            <h3>Quality Assurance</h3>
-            <h4>
-              ZABUD Technologies <span class="location">| Colombia</span>
-            </h4>
-            <p data-i18n="zabud_summary">Worked on the quality assurance of enterprise web applications, focusing on both manual and automated testing. Designed and implemented automation frameworks with Java and Selenium WebDriver, developed API and database validation scripts, and executed performance testing with JMeter. Supported the QA team in improving test coverage and reliability.</p>
-            <h5 data-i18n="responsibilities">Responsibilities</h5>
-            <ul>
-              <li data-i18n="zabud_resp1">Performed manual and automated testing for functional, regression, and API validation using Java and Selenium.</li>
-              <li data-i18n="zabud_resp2">Developed scalable automation architecture with Selenium WebDriver, TestNG, and Maven.</li>
-              <li data-i18n="zabud_resp3">Automated database validation for PostgreSQL and MongoDB, and executed performance testing with JMeter.</li>
-            </ul>
-            <h5 data-i18n="achievements">Achievements</h5>
-            <ul>
-              <li data-i18n="zabud_achv1">Reduced regression testing time by 25% through automation framework development and reusable test components.</li>
-              <li data-i18n="zabud_achv2">Decreased UAT defects by 20% by implementing early automated validation and shift-left testing.</li>
-              <li data-i18n="zabud_achv3">Increased test coverage by 30% through strategic automation and data-driven testing.</li>
-            </ul>
-            <div class="project-tags">
-              <span class="project-tag">Java</span>
-              <span class="project-tag">Selenium</span>
-              <span class="project-tag">PostgreSQL</span>
-              <span class="project-tag">JMeter</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <div class="container">
-      <h2 class="text-center mb-30" data-i18n="featured_projects">Featured Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-image" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%)">
-            <i class="fas fa-clipboard-list"></i>
-          </div>
-          <div class="project-content">
-            <h3 data-i18n="generador_eval_title">Squad Evaluation Generator</h3>
-            <p data-i18n="generador_eval_desc">Full-stack web application built with Next.js 16 and TypeScript for managing and evaluating monthly squad tasks, featuring automatic score calculation, versioned AI-powered reports, and a complete CI/CD pipeline.</p>
-            <ul>
-              <li data-i18n="generador_eval_li1">Automatic score calculation with configurable grade penalties per feedback severity (high/medium/low)</li>
-              <li data-i18n="generador_eval_li2">Versioned report generation with AI comments (OpenAI GPT) for performance and communication analysis</li>
-              <li data-i18n="generador_eval_li3">Complete CRUD task management with real-time validation, full audit trail, and role-based access control</li>
-              <li data-i18n="generador_eval_li4">Supabase Auth with JWT, Row Level Security (RLS), and automatic session timeout</li>
-              <li data-i18n="generador_eval_li5">Full CI/CD pipeline with Jest unit tests and Playwright E2E tests — deploy blocked if tests fail</li>
-            </ul>
-            <div class="project-tags">
-              <span class="project-tag">Next.js</span>
-              <span class="project-tag">TypeScript</span>
-              <span class="project-tag">Supabase</span>
-              <span class="project-tag">PostgreSQL</span>
-              <span class="project-tag">OpenAI</span>
-              <span class="project-tag">Jest</span>
-              <span class="project-tag">Playwright</span>
-              <span class="project-tag">CI/CD</span>
-            </div>
-            <div class="project-links">
-              <a href="https://generador-evaluaciones.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-                <i class="fas fa-external-link-alt"></i> <span data-i18n="view_demo">View Demo</span>
-              </a>
-              <a href="https://github.com/franciscoCabezasVega/generador-evaluaciones" target="_blank" rel="noopener noreferrer" class="project-link">
-                <i class="fab fa-github"></i> <span data-i18n="view_code">View Code</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <div class="project-content">
-            <h3 data-i18n="istqb_study_app_title">ISTQB Study App</h3>
-            <p data-i18n="istqb_study_app_desc">Progressive Web Application (PWA) designed to help students prepare for the ISTQB Foundation Level certification with an intelligent study system and gamification.</p>
-            <ul>
-              <li data-i18n="istqb_study_app_li1">Intelligent question engine with spaced repetition algorithm (SM-2)</li>
-              <li data-i18n="istqb_study_app_li2">Full exam simulator with realistic ISTQB distribution (40 questions/60 minutes)</li>
-              <li data-i18n="istqb_study_app_li3">Achievements system, study streaks, and detailed performance tracking</li>
-              <li data-i18n="istqb_study_app_li4">Multi-language support (Spanish/English), offline mode, and PWA capabilities</li>
-              <li data-i18n="istqb_study_app_li5">Comprehensive test coverage with CI/CD pipeline and automated deployment</li>
-            </ul>
-            <div class="project-tags">
-              <span class="project-tag">Next.js</span>
-              <span class="project-tag">TypeScript</span>
-              <span class="project-tag">React</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">PostgreSQL</span>
-              <span class="project-tag">Supabase</span>
-              <span class="project-tag">PWA</span>
-              <span class="project-tag">Jest</span>
-            </div>
-            <div class="project-links">
-              <a href="https://istqb-frontend-static.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link">
-                <i class="fas fa-external-link-alt"></i> <span data-i18n="view_demo">View Demo</span>
-              </a>
-              <a href="https://github.com/franciscoCabezasVega/ISTQB-Study-App" target="_blank" rel="noopener noreferrer" class="project-link">
-                <i class="fab fa-github"></i> <span data-i18n="view_code">View Code</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Certifications Section -->
-  <section id="certifications" class="certifications">
-    <div class="container">
-      <h2 class="text-center mb-30" data-i18n="certifications">Certifications</h2>
-      <div class="certs-container">
-        <div class="cert-card">
-          <span class="cert-type" data-i18n="technical">Technical</span>
-          <h3>ISTQB® Certified Tester - Foundation Level</h3>
-          <p data-i18n="istqb_desc">
-            International certification in software quality assurance covering
-            fundamental testing concepts and practices.
           </p>
         </div>
-
-        <div class="cert-card">
-          <span class="cert-type">Cloud</span>
-          <h3 data-i18n="gcp_certifications">Google Cloud Platform Certifications</h3>
-          <p data-i18n="gcp_desc">
-            Designing scalable solutions and using BigQuery, Data Studio, and
-            data analysis tools.
-          </p>
+        <div class="skills-grid">
+          <div class="skill-category"><h3><i class="fas fa-brain" aria-hidden="true"></i> <span data-i18n="ai_tools">AI-Assisted Tools</span></h3><ul class="chips"><li class="skill-chip level-advanced"><span class="skill-name">GitHub Copilot</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">Model Context Protocol (MCP)</span><span class="skill-years" data-since="2024-11-25"><span data-num>1</span> <span data-unit data-i18n="year">year</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">AI-Assisted Testing</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">LLM Testing</span><span class="skill-years">1 <span data-i18n="year">year</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">Claude Code</span><span class="skill-years" data-since="2025-02-24"><span data-num>1</span> <span data-unit data-i18n="year">year</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">TypeSafe (Jev)</span><span class="skill-years" data-since="2026-09-15"><span data-num>&lt;1</span> <span data-unit data-i18n="year">year</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">OpenAI API</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">WhatsApp chatbots</span><span class="skill-years" data-since="2023-02-01"><span data-num>3</span> <span data-unit data-i18n="years">years</span></span></li></ul></div>
+          <div class="skill-category"><h3><i class="fas fa-robot" aria-hidden="true"></i> <span data-i18n="automation_framework">Automation framework</span></h3><ul class="chips"><li class="skill-chip level-advanced"><span class="skill-name">Playwright</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">Cypress</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">Selenium</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">Appium</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li><li class="skill-chip level-expert"><span class="skill-name">Page Object Model</span><span class="skill-years">4 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">BDD</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li></ul></div>
+          <div class="skill-category"><h3><i class="fas fa-code" aria-hidden="true"></i> <span data-i18n="programming">Programming languages</span></h3><ul class="chips"><li class="skill-chip level-advanced"><span class="skill-name">TypeScript</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">JavaScript</span><span class="skill-years">4 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">Python</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">Java</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">SQL</span><span class="skill-years">5 <span data-i18n="years">years</span></span></li></ul></div>
+          <div class="skill-category"><h3><i class="fas fa-cloud" aria-hidden="true"></i> <span data-i18n="ci_cloud">CI/CD and cloud</span></h3><ul class="chips"><li class="skill-chip level-advanced"><span class="skill-name">GitHub Actions</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">AWS</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">Google Cloud</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">Jenkins</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">Azure DevOps</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li></ul></div>
+          <div class="skill-category"><h3><i class="fas fa-gauge-high" aria-hidden="true"></i> <span data-i18n="api_perf">API and performance</span></h3><ul class="chips"><li class="skill-chip level-expert"><span class="skill-name">Postman</span><span class="skill-years">5 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">Rest Assured</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">JMeter</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">Jest</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li></ul></div>
+          <div class="skill-category"><h3><i class="fas fa-database" aria-hidden="true"></i> <span data-i18n="databases">Databases</span></h3><ul class="chips"><li class="skill-chip level-advanced"><span class="skill-name">PostgreSQL</span><span class="skill-years">4 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">MongoDB</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">MySQL</span><span class="skill-years">4 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">Supabase</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li></ul></div>
+          <div class="skill-category"><h3><i class="fas fa-toolbox" aria-hidden="true"></i> <span data-i18n="libs_tools">Libraries and tooling</span></h3><ul class="chips"><li class="skill-chip level-advanced"><span class="skill-name">Zod</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">Faker.js</span><span class="skill-years">4 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">Allure</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">Testing Library</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">Lighthouse CI</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">semantic-release</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li><li class="skill-chip level-intermediate"><span class="skill-name">Husky</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li></ul></div>
+          <div class="skill-category"><h3><i class="fas fa-diagram-project" aria-hidden="true"></i> <span data-i18n="mgmt_agile">Management and Agile</span></h3><ul class="chips"><li class="skill-chip level-advanced"><span class="skill-name">JIRA</span><span class="skill-years">4 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">Xray</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-expert"><span class="skill-name">ClickUp</span><span class="skill-years">2 <span data-i18n="years">years</span></span></li><li class="skill-chip level-expert"><span class="skill-name">Notion</span><span class="skill-years">3 <span data-i18n="years">years</span></span></li><li class="skill-chip level-expert"><span class="skill-name" data-i18n="agile">Agile</span><span class="skill-years">5 <span data-i18n="years">years</span></span></li><li class="skill-chip level-advanced"><span class="skill-name">Scrum</span><span class="skill-years">5 <span data-i18n="years">years</span></span></li></ul></div>
         </div>
 
-        <div class="cert-card">
-          <span class="cert-type" data-i18n="agile">Agile</span>
-          <h3>SCRUM Foundation Professional Certificate (SFPC)</h3>
-          <p data-i18n="scrum_desc">
-            Certification covering principles and fundamentals of the SCRUM
-            methodology for agile development.
-          </p>
-        </div>
-
-        <div class="cert-card">
-          <span class="cert-type" data-i18n="ai">AI</span>
-          <h3 data-i18n="ai_cert">Artificial Intelligence - MinTIC</h3>
-          <p data-i18n="ai_desc">
-            Fundamentals and practical applications of AI in the public
-            sector.
-          </p>
-        </div>
-
-        <div class="cert-card">
-          <span class="cert-type" data-i18n="language">Language</span>
-          <h3>EF SET Certificate™</h3>
-          <p data-i18n="ef_set_desc">
-            English proficiency evaluation based on CEFR standards (B2 level).
-          </p>
-        </div>
-
-        <div class="cert-card">
-          <span class="cert-type">Cloud Labs</span>
-          <h3 data-i18n="qwiklabs">Qwiklabs Certifications</h3>
-          <p data-i18n="qwiklabs_desc">Hands-on labs in Google Cloud and DevOps technologies.</p>
+        <div class="testing">
+          <h3 class="subsection-title" data-i18n="testing_experience">Test types</h3>
+          <p class="hint" data-i18n="testing_coverage_intro">Click a type to see its techniques.</p>
+          <ul class="test-chips">
+          <li><button type="button" class="test-chip" data-modal="modal-ai" aria-haspopup="dialog"><i class="fas fa-flask" aria-hidden="true"></i><span data-i18n="ai_testing">AI & LLM Testing</span></button></li>
+          <li><button type="button" class="test-chip" data-modal="modal-security" aria-haspopup="dialog"><i class="fas fa-shield-halved" aria-hidden="true"></i><span data-i18n="sx_title">Security Testing</span></button></li>
+          <li><button type="button" class="test-chip" data-modal="modal-functional" aria-haspopup="dialog"><i class="fas fa-square-check" aria-hidden="true"></i><span data-i18n="functional_tests">Functional Tests</span></button></li>
+          <li><button type="button" class="test-chip" data-modal="modal-nonfunctional" aria-haspopup="dialog"><i class="fas fa-gears" aria-hidden="true"></i><span data-i18n="nonfunctional_tests">Non-functional Tests</span></button></li>
+          <li><button type="button" class="test-chip" data-modal="modal-blackbox" aria-haspopup="dialog"><i class="fas fa-table-cells-large" aria-hidden="true"></i><span data-i18n="black_box_testing">Black Box Testing</span></button></li>
+          <li><button type="button" class="test-chip" data-modal="modal-whitebox" aria-haspopup="dialog"><i class="fas fa-code-branch" aria-hidden="true"></i><span data-i18n="white_box_testing">White Box Testing</span></button></li>
+          <li><button type="button" class="test-chip" data-modal="modal-documentation" aria-haspopup="dialog"><i class="fas fa-file-lines" aria-hidden="true"></i><span data-i18n="test_documentation">Test Documentation</span></button></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Achievements Section -->
-  <section id="achievements" class="achievements">
-    <div class="container">
-      <h2 class="text-center mb-30" data-i18n="professional_achievements">Professional Achievements</h2>
-
-      <div class="achievement-card">
-        <div class="achievement-icon">
-          <i class="fas fa-chart-line"></i>
+    <!-- Experience -->
+    <section id="experience" class="section experience">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-i18n="work_experience">Work Experience</h2>
         </div>
-        <div class="achievement-content">
-          <span class="company">Jelou</span>
-          <h3 data-i18n="reduction_defects">Production Defect Reduction</h3>
-          <p data-i18n="jelou_achievements_desc">
-            Reduced regression time by 40% through comprehensive automation suite implementation, decreased critical production incidents by 30% with robust pre-release validation, and increased test coverage by 35% through strategic automation of AI model validation scenarios.
-          </p>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-content">
+              <span class="timeline-date" data-i18n="jelou_date">February 2023 - Present</span>
+              <h3>QA Analyst</h3>
+              <h4>Jelou <span class="location">| Ecuador</span></h4>
+              <dl class="results">
+                <div class="result"><dt data-i18n="res1_l">regression testing time</dt><dd>−40%</dd></div>
+                <div class="result"><dt data-i18n="res2_l">critical production incidents</dt><dd>−30%</dd></div>
+                <div class="result"><dt data-i18n="res3_l">test coverage</dt><dd>+35%</dd></div>
+              </dl>
+              <div class="role-cols">
+                <div><h5 data-i18n="responsibilities">Responsibilities</h5><ul><li data-i18n="jr1">Manual and automated testing: functional, regression and API.</li><li data-i18n="jr2">E2E automation suites with Cypress and Playwright.</li><li data-i18n="jr3">Validation of AI models and chatbots on WhatsApp and social channels (LLM Testing, MCP).</li><li data-i18n="jr4">AI-assisted test design (Copilot, MCP) and CI/CD process improvements (Docker, AWS).</li></ul></div>
+                <div><h5 data-i18n="achievements">Achievements</h5><ul><li data-i18n="ja1">Cut regression time with automation and parallel execution.</li><li data-i18n="ja2">Fewer critical incidents in production through stronger pre-release validation and automated smoke tests.</li><li data-i18n="ja3">Higher test coverage through strategic automation and AI model validation.</li></ul></div>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Playwright</span><span class="project-tag">Cypress</span><span class="project-tag">LLM Testing</span><span class="project-tag">WhatsApp</span><span class="project-tag">MCP</span><span class="project-tag">Docker</span><span class="project-tag">CI/CD</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-content">
+              <span class="timeline-date" data-i18n="houm_date">May 2022 - November 2022</span>
+              <h3>QA Engineer</h3>
+              <h4>Houm <span class="location">| Colombia</span></h4>
+              <dl class="results">
+                <div class="result"><dt data-i18n="res1_l">regression testing time</dt><dd>−30%</dd></div>
+                <div class="result"><dt data-i18n="rh2_l">recurring defects</dt><dd>−25%</dd></div>
+              </dl>
+              <div class="role-cols">
+                <div><h5 data-i18n="responsibilities">Responsibilities</h5><ul><li data-i18n="hr1">Automated and manual suites for core business flows.</li><li data-i18n="hr2">E2E framework with Cypress and the page object model.</li><li data-i18n="hr3">API tests with Postman and Newman in CI/CD.</li></ul></div>
+                <div><h5 data-i18n="achievements">Achievements</h5><ul><li data-i18n="ha1">Cut regression time with E2E automation and better coverage.</li><li data-i18n="ha2">Fewer recurring defects through automated regression and early detection.</li><li data-i18n="ha3">Better lead-verification accuracy with automated, data-driven validation.</li></ul></div>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Cypress</span><span class="project-tag">Postman</span><span class="project-tag">E2E</span><span class="project-tag">CI/CD</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-content">
+              <span class="timeline-date" data-i18n="zabud_date">January 2020 - May 2022</span>
+              <h3>Quality Assurance</h3>
+              <h4>ZABUD Technologies <span class="location">| Colombia</span></h4>
+              <dl class="results">
+                <div class="result"><dt data-i18n="res1_l">regression testing time</dt><dd>−25%</dd></div>
+                <div class="result"><dt data-i18n="rz2_l">UAT defects</dt><dd>−20%</dd></div>
+                <div class="result"><dt data-i18n="res3_l">test coverage</dt><dd>+30%</dd></div>
+              </dl>
+              <div class="role-cols">
+                <div><h5 data-i18n="responsibilities">Responsibilities</h5><ul><li data-i18n="zr1">Manual and automated testing in Java with Selenium.</li><li data-i18n="zr2">Scalable automation architecture: Selenium WebDriver, TestNG, Maven.</li><li data-i18n="zr3">PostgreSQL and MongoDB validation and JMeter performance tests.</li></ul></div>
+                <div><h5 data-i18n="achievements">Achievements</h5><ul><li data-i18n="za1">Cut regression time with reusable automation components.</li><li data-i18n="za2">Fewer UAT defects through early automated validation (shift-left).</li><li data-i18n="za3">Higher coverage through strategic, data-driven automation.</li></ul></div>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Java</span><span class="project-tag">Selenium</span><span class="project-tag">PostgreSQL</span><span class="project-tag">JMeter</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="achievement-card">
-        <div class="achievement-icon">
-          <i class="fas fa-bolt"></i>
+    <!-- Projects -->
+    <section id="projects" class="section projects">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-i18n="featured_projects">Featured Projects</h2>
         </div>
-        <div class="achievement-content">
-          <span class="company">Houm</span>
-          <h3 data-i18n="houm_achievements_title">Automation and Quality Improvements</h3>
-          <p data-i18n="houm_achievements_desc">
-            Achieved a 30% reduction in regression testing time through E2E automation framework implementation, decreased recurring defects by 25% with comprehensive automated regression suite, and improved lead verification accuracy through automated validation workflows and data-driven testing.
-          </p>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-image"><i class="fas fa-clipboard-list" aria-hidden="true"></i><span class="badge" data-i18n="ai_powered">AI-powered</span></div>
+            <div class="project-content">
+              <h3 data-i18n="generador_eval_title">Squad Evaluation Generator</h3>
+              <p data-i18n="generador_eval_desc">Next.js and Supabase app that scores monthly squad tasks, with AI-written reports and CI quality gates.</p>
+              <ul>
+                <li data-i18n="generador_eval_li7">AI triage of failed E2E runs: a vision model classifies the failure in the Slack alert thread</li>
+                <li data-i18n="generador_eval_li6">ClickUp and Notion integrations, including its own MCP server</li>
+                <li data-i18n="generador_eval_li4">Supabase Auth with JWT, RLS and AES-256-GCM encrypted API keys</li>
+                <li data-i18n="generador_eval_li5">CI/CD with Jest and Playwright; deploy blocked if tests fail</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Next.js</span><span class="project-tag">TypeScript</span><span class="project-tag">Supabase</span><span class="project-tag">OpenAI</span><span class="project-tag">TypeSafe</span><span class="project-tag">MCP</span><span class="project-tag">Playwright</span>
+              </div>
+              <div class="project-links">
+                <a href="https://generador-evaluaciones.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> <span data-i18n="view_demo">View Demo</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image"><i class="fas fa-vial-circle-check" aria-hidden="true"></i></div>
+            <div class="project-content">
+              <h3 data-i18n="pw_title">Playwright Automation Framework</h3>
+              <p data-i18n="pw_desc">TypeScript and Playwright E2E framework for a social platform, with full QA documentation.</p>
+              <ul>
+                <li data-i18n="pw_li1">Page Object Model over 9 critical flows, Faker data, reusable auth setup</li>
+                <li data-i18n="pw_li3">Allure reports, test plan, traceability matrix and defect report</li>
+                <li data-i18n="pw_li4">Credentials from environment variables; reports checked for leaked secrets</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Playwright</span><span class="project-tag">TypeScript</span><span class="project-tag">POM</span><span class="project-tag">Allure</span>
+              </div>
+              <div class="project-links">
+                <a href="https://social-media-qa.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> <span data-i18n="view_demo">View Demo</span></a>
+                <a href="https://github.com/franciscoCabezasVega/seek-reto-tecnico-qa-engineer" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="view_code">View Code</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+            <div class="project-content">
+              <h3 data-i18n="istqb_study_app_title">ISTQB Study App</h3>
+              <p data-i18n="istqb_study_app_desc">PWA to prepare for ISTQB Foundation Level with spaced repetition and an exam simulator.</p>
+              <ul>
+                <li data-i18n="istqb_study_app_li1">Spaced-repetition (SM-2) question engine</li>
+                <li data-i18n="istqb_study_app_li2">Exam simulator: 40 questions in 60 minutes</li>
+                <li data-i18n="istqb_study_app_li4">Spanish and English, offline mode, PWA</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Next.js</span><span class="project-tag">TypeScript</span><span class="project-tag">PWA</span><span class="project-tag">Jest</span>
+              </div>
+              <div class="project-links">
+                <a href="https://istqb-frontend-static.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> <span data-i18n="view_demo">View Demo</span></a>
+                <a href="https://github.com/franciscoCabezasVega/ISTQB-Study-App" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="view_code">View Code</span></a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="achievement-card">
-        <div class="achievement-icon">
-          <i class="fas fa-robot"></i>
+    <!-- Certifications -->
+    <section id="certifications" class="section certifications">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-i18n="certifications">Certifications</h2>
         </div>
-        <div class="achievement-content">
-          <span class="company">ZABUD Technologies</span>
-          <h3 data-i18n="qa_automation_implementation">QA Automation Implementation</h3>
-          <p data-i18n="zabud_achievements_desc">
-            Implemented comprehensive automation frameworks using Java and Selenium with reusable components, developed database validation automation for PostgreSQL and MongoDB, and increased test coverage by 30% through strategic automation while reducing regression time by 25%.
-          </p>
-        </div>
+        <ul class="cert-list">
+          <li class="cert-card"><span class="cert-type" data-i18n="technical">Technical</span><h3>ISTQB® Certified Tester · Foundation Level</h3></li>
+          <li class="cert-card"><span class="cert-type" data-i18n="ai">AI</span><h3 data-i18n="ai_cert">Artificial Intelligence - MinTIC</h3></li>
+          <li class="cert-card"><span class="cert-type" data-i18n="agile">Agile</span><h3>SCRUM Foundation Professional Certificate</h3></li>
+          <li class="cert-card"><span class="cert-type">Cloud</span><h3 data-i18n="gcp_certifications">Google Cloud Platform Certifications</h3></li>
+          <li class="cert-card"><span class="cert-type">Cloud Labs</span><h3 data-i18n="qwiklabs">Qwiklabs Certifications</h3></li>
+          <li class="cert-card"><span class="cert-type" data-i18n="language">Language</span><h3 data-i18n="cert_ef">EF SET Certificate™ · English B2</h3></li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2 class="text-center mb-30" data-i18n="get_in_touch">Get In Touch</h2>
-      <div class="contact-container">
-        <div class="contact-info">
-          <h3 data-i18n="contact_information">Contact Information</h3>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div><a href="mailto:frank_vega25@hotmail.com">frank_vega25@hotmail.com</a></div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fab fa-linkedin"></i>
-            </div>
-            <div>
-              <a href="https://www.linkedin.com/in/franciscoantoniocabezasvega/"
-                target="_blank">franciscoantoniocabezasvega</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fab fa-github"></i>
-            </div>
-            <div>
-              <a href="https://github.com/franciscoCabezasVega" target="_blank">franciscoCabezasVega</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div>
-              <a href="https://www.google.com/maps/search/?api=1&query=Cartagena%2C%20Colombia" target="_blank">
-                Cartagena, Colombia
-              </a>
-            </div>
-          </div>
+    <!-- Contact -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-i18n="get_in_touch">Get In Touch</h2>
         </div>
-        <div class="contact-form">
-          <form id="contact-form">
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3 data-i18n="contact_information">Contact Information</h3>
+            <ul class="contact-list">
+              <li class="contact-item"><span class="contact-icon"><i class="fas fa-envelope" aria-hidden="true"></i></span><a href="mailto:frank_vega25@hotmail.com">frank_vega25@hotmail.com</a></li>
+              <li class="contact-item"><span class="contact-icon"><i class="fab fa-linkedin" aria-hidden="true"></i></span><a href="https://www.linkedin.com/in/franciscoantoniocabezasvega/" target="_blank" rel="noopener noreferrer">franciscoantoniocabezasvega</a></li>
+              <li class="contact-item"><span class="contact-icon"><i class="fab fa-github" aria-hidden="true"></i></span><a href="https://github.com/franciscoCabezasVega" target="_blank" rel="noopener noreferrer">franciscoCabezasVega</a></li>
+              <li class="contact-item"><span class="contact-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></span><a href="https://www.google.com/maps/search/?api=1&query=Cartagena%2C%20Colombia" target="_blank" rel="noopener noreferrer">Cartagena, Colombia</a></li>
+            </ul>
+          </div>
+
+          <form id="contact-form" class="contact-form" novalidate>
             <div class="form-group">
               <label for="name" data-i18n="name">Name</label>
-              <input type="text" id="name" name="name" autocomplete="name" required>
+              <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error name-count" />
+              <div class="field-meta"><span class="field-error" id="name-error" role="alert"></span><span class="field-count" id="name-count"></span></div>
             </div>
             <div class="form-group">
               <label for="email" data-i18n="email_label">Email</label>
-              <input type="email" id="email" name="email" autocomplete="email" required>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error email-count" />
+              <div class="field-meta"><span class="field-error" id="email-error" role="alert"></span><span class="field-count" id="email-count"></span></div>
             </div>
             <div class="form-group">
               <label for="subject" data-i18n="subject">Subject</label>
-              <input type="text" id="subject" name="subject">
+              <input type="text" id="subject" name="subject" required aria-describedby="subject-error subject-count" />
+              <div class="field-meta"><span class="field-error" id="subject-error" role="alert"></span><span class="field-count" id="subject-count"></span></div>
             </div>
             <div class="form-group">
               <label for="message" data-i18n="message">Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
+              <textarea id="message" name="message" rows="5" required aria-describedby="message-error message-count"></textarea>
+              <div class="field-meta"><span class="field-error" id="message-error" role="alert"></span><span class="field-count" id="message-count"></span></div>
+            </div>
+
+            <div class="hp" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
             </div>
 
             <div class="g-recaptcha" data-sitekey="6LdPP3IrAAAAANNJUw3OhGK-Tbym1JyIAgzIOOPm"></div>
 
-            <div style="display: flex; gap: 10px; justify-content: center;">
-              <button type="submit" class="btn" id="send-btn" disabled data-i18n="send_message">
-                Send Message
-              </button>
-              <button type="reset" class="btn" id="clear-btn" data-i18n="clear_form">
-                Clear
-              </button>
+            <div class="form-actions">
+              <button type="submit" class="btn" id="send-btn" data-i18n="send_message">Send Message</button>
+              <button type="button" class="btn btn-ghost" id="clear-btn" data-i18n="clear_form">Clear</button>
             </div>
+            <p class="form-privacy" data-i18n="form_privacy">Your message is sent by email through EmailJS and used only to reply to you.</p>
+            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/franciscoantoniocabezasvega/" target="_blank"><i
-            class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/franciscoCabezasVega" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.facebook.com/francisco.cabezas.769349/" target="_blank"><i class="fab fa-facebook"></i></a>
-      </div>
-      <p data-i18n="copyright">&copy; 2025 Francisco Cabezas. All Rights Reserved.</p>
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <ul class="social-links">
+        <li><a href="https://www.linkedin.com/in/franciscoantoniocabezasvega/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+        <li><a href="https://github.com/franciscoCabezasVega" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.facebook.com/francisco.cabezas.769349/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+      </ul>
+      <p data-i18n="copyright">&copy; <span class="current-year">2026</span> Francisco Cabezas. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="scripts.js"></script>
-
-  <!-- Functional Tests Modal -->
-  <input type="checkbox" id="modal-functional" class="modal-toggle" />
-  <div class="modal">
-    <div class="modal-content">
-      <label for="modal-functional" class="close-modal">&times;</label>
-      <h3 data-i18n="functional_testing_techniques">Functional Testing Techniques</h3>
-      <ul>
-        <li data-i18n="acceptance_tests">Acceptance tests</li>
-        <li data-i18n="exploratory_testing">Exploratory Testing</li>
-        <li data-i18n="integration_tests">Integration tests</li>
-        <li data-i18n="regression_tests">Regression tests</li>
-        <li>Re-testing</li>
-        <li data-i18n="sanity_tests">Sanity tests</li>
-        <li data-i18n="smoke_testing">Smoke Testing</li>
-        <li data-i18n="system_testing">System testing</li>
-      </ul>
+  <dialog id="modal-ai" class="modal" aria-labelledby="modal-ai-title">
+    <div class="modal-body">
+      <form method="dialog"><button class="close-modal" aria-label="Close" data-i18n-aria="close">&times;</button></form>
+      <h3 id="modal-ai-title" data-i18n="ai_testing_techniques">AI & LLM Testing Techniques</h3>
+      <ul class="technique-list"><li data-i18n="ai_t1">Prompt regression testing</li><li data-i18n="ai_t2">Hallucination and groundedness checks</li><li data-i18n="ai_t3">RAG evaluation</li><li data-i18n="ai_t4">LLM-as-judge with human calibration</li><li data-i18n="ai_t5">Red teaming and prompt injection</li><li data-i18n="ai_t6">Guardrail validation</li><li data-i18n="ai_t7">Agent tool-call testing</li><li data-i18n="ai_t8">Non-determinism and consistency testing</li><li data-i18n="ai_t9">Bias and fairness checks</li><li data-i18n="ai_t10">Conversational flows across channels (WhatsApp)</li></ul>
     </div>
-  </div>
+  </dialog>
 
-  <!-- Non-functional Tests Modal -->
-  <input type="checkbox" id="modal-nonfunctional" class="modal-toggle" />
-  <div class="modal">
-    <div class="modal-content">
-      <label for="modal-nonfunctional" class="close-modal">&times;</label>
-      <h3 data-i18n="nonfunctional_testing_techniques">Non-functional Testing Techniques</h3>
-      <ul>
-        <li data-i18n="compatibility_tests">Compatibility tests</li>
-        <li data-i18n="performance_tests">Performance tests</li>
-        <li data-i18n="portability_testing">Portability testing</li>
-        <li data-i18n="security_testing">Security testing</li>
-        <li data-i18n="usability_testing">Usability testing</li>
-      </ul>
+  <dialog id="modal-security" class="modal" aria-labelledby="modal-security-title">
+    <div class="modal-body">
+      <form method="dialog"><button class="close-modal" aria-label="Close" data-i18n-aria="close">&times;</button></form>
+      <h3 id="modal-security-title" data-i18n="sx_techniques">Security Testing Techniques</h3>
+      <ul class="technique-list"><li data-i18n="sx_t1">Authentication and session testing</li><li data-i18n="sx_t2">Authorization and access control (IDOR, RLS)</li><li data-i18n="sx_t3">XSS and injection payloads</li><li data-i18n="sx_t4">CSRF protection</li><li data-i18n="sx_t5">Security headers and configuration</li><li data-i18n="sx_t6">Secrets and credential handling</li><li data-i18n="sx_t7">Dependency and supply chain review</li><li data-i18n="sx_t8">Prompt injection and data leakage in AI features</li></ul>
     </div>
-  </div>
+  </dialog>
 
-  <!-- Black Box Testing Modal -->
-  <input type="checkbox" id="modal-blackbox" class="modal-toggle" />
-  <div class="modal">
-    <div class="modal-content">
-      <label for="modal-blackbox" class="close-modal">&times;</label>
-      <h3 data-i18n="black_box_testing_techniques">Black Box Testing Techniques</h3>
-      <ul>
-        <li data-i18n="boundary_values">Analysis of boundary values</li>
-        <li data-i18n="error_guessing">Conjecture of errors</li>
-        <li data-i18n="decision_tables">Decision tables</li>
-        <li data-i18n="equivalence_partitions">Equivalence partitions</li>
-        <li data-i18n="state_transition">State transition</li>
-        <li data-i18n="use_cases">Use cases</li>
+  <dialog id="modal-functional" class="modal" aria-labelledby="modal-functional-title">
+    <div class="modal-body">
+      <form method="dialog"><button class="close-modal" aria-label="Close" data-i18n-aria="close">&times;</button></form>
+      <h3 id="modal-functional-title" data-i18n="functional_testing_techniques">Functional Testing Techniques</h3>
+      <ul class="technique-list"><li data-i18n="acceptance_tests">Acceptance tests</li><li data-i18n="exploratory_testing">Exploratory Testing</li><li data-i18n="integration_tests">Integration tests</li><li data-i18n="regression_tests">Regression tests</li><li data-i18n="retesting">Re-testing</li><li data-i18n="sanity_tests">Sanity tests</li><li data-i18n="smoke_testing">Smoke Testing</li><li data-i18n="system_testing">System testing</li></ul>
     </div>
-  </div>
+  </dialog>
 
-  <!-- White Box Testing Modal -->
-  <input type="checkbox" id="modal-whitebox" class="modal-toggle" />
-  <div class="modal">
-    <div class="modal-content">
-      <label for="modal-whitebox" class="close-modal">&times;</label>
-      <h3 data-i18n="white_box_testing_techniques">White Box Testing Techniques</h3>
-      <ul>
-        <li data-i18n="branch_tests">Branch tests</li>
-        <li data-i18n="condition_coverage">Condition coverage</li>
-        <li data-i18n="decision_coverage">Decision coverage</li>
-        <li data-i18n="dynamic_analysis">Dynamic analysis</li>
-        <li data-i18n="loop_tests">Loop tests</li>
-        <li data-i18n="road_tests">Road tests</li>
-        <li data-i18n="statement_coverage">Statement coverage</li>
-        <li data-i18n="static_analysis">Static analysis</li>
-        <li data-i18n="unit_testing">Unit testing</li>
-      </ul>
+  <dialog id="modal-nonfunctional" class="modal" aria-labelledby="modal-nonfunctional-title">
+    <div class="modal-body">
+      <form method="dialog"><button class="close-modal" aria-label="Close" data-i18n-aria="close">&times;</button></form>
+      <h3 id="modal-nonfunctional-title" data-i18n="nonfunctional_testing_techniques">Non-functional Testing Techniques</h3>
+      <ul class="technique-list"><li data-i18n="compatibility_tests">Compatibility tests</li><li data-i18n="performance_tests">Performance tests</li><li data-i18n="portability_testing">Portability testing</li><li data-i18n="security_testing">Security testing</li><li data-i18n="usability_testing">Usability testing</li></ul>
     </div>
-  </div>
+  </dialog>
 
-  <!-- Test Documentation Testing Modal -->
-  <input type="checkbox" id="modal-documentation" class="modal-toggle" />
-  <div class="modal">
-    <div class="modal-content">
-      <label for="modal-documentation" class="close-modal">&times;</label>
-      <h3 data-i18n="test_documentation_techniques">Test Documentation Techniques</h3>
-      <ul>
-        <li data-i18n="bug_reporting">Bug Reporting</li>
-        <li data-i18n="suggested_improvement">Suggested improvement</li>
-        <li data-i18n="test_plan">Test plan</li>
-        <li data-i18n="test_suite">Test suite</li>
-      </ul>
+  <dialog id="modal-blackbox" class="modal" aria-labelledby="modal-blackbox-title">
+    <div class="modal-body">
+      <form method="dialog"><button class="close-modal" aria-label="Close" data-i18n-aria="close">&times;</button></form>
+      <h3 id="modal-blackbox-title" data-i18n="black_box_testing_techniques">Black Box Testing Techniques</h3>
+      <ul class="technique-list"><li data-i18n="boundary_values">Analysis of boundary values</li><li data-i18n="error_guessing">Conjecture of errors</li><li data-i18n="decision_tables">Decision tables</li><li data-i18n="equivalence_partitions">Equivalence partitions</li><li data-i18n="state_transition">State transition</li><li data-i18n="use_cases">Use cases</li></ul>
     </div>
-  </div>
+  </dialog>
 
+  <dialog id="modal-whitebox" class="modal" aria-labelledby="modal-whitebox-title">
+    <div class="modal-body">
+      <form method="dialog"><button class="close-modal" aria-label="Close" data-i18n-aria="close">&times;</button></form>
+      <h3 id="modal-whitebox-title" data-i18n="white_box_testing_techniques">White Box Testing Techniques</h3>
+      <ul class="technique-list"><li data-i18n="branch_tests">Branch tests</li><li data-i18n="condition_coverage">Condition coverage</li><li data-i18n="decision_coverage">Decision coverage</li><li data-i18n="dynamic_analysis">Dynamic analysis</li><li data-i18n="loop_tests">Loop tests</li><li data-i18n="road_tests">Road tests</li><li data-i18n="statement_coverage">Statement coverage</li><li data-i18n="static_analysis">Static analysis</li><li data-i18n="unit_testing">Unit testing</li></ul>
+    </div>
+  </dialog>
+
+  <dialog id="modal-documentation" class="modal" aria-labelledby="modal-documentation-title">
+    <div class="modal-body">
+      <form method="dialog"><button class="close-modal" aria-label="Close" data-i18n-aria="close">&times;</button></form>
+      <h3 id="modal-documentation-title" data-i18n="test_documentation_techniques">Test Documentation Techniques</h3>
+      <ul class="technique-list"><li data-i18n="bug_reporting">Bug Reporting</li><li data-i18n="suggested_improvement">Suggested improvement</li><li data-i18n="test_plan">Test plan</li><li data-i18n="test_suite">Test suite</li></ul>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous" defer></script>
+  <script src="i18n/es.js" defer></script>
+  <script src="scripts.js" defer></script>
 </body>
 
 </html>
