@@ -371,28 +371,6 @@ a:hover {
   display: none;
 }
 
-.icon-sun {
-  display: none;
-}
-
-:root[data-theme="dark"] .icon-moon {
-  display: none;
-}
-
-:root[data-theme="dark"] .icon-sun {
-  display: inline;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .icon-moon {
-    display: none;
-  }
-
-  :root:not([data-theme="light"]) .icon-sun {
-    display: inline;
-  }
-}
-
 @media (max-width: 1179.98px) {
   .mobile-menu {
     display: inline-grid;
@@ -2082,4 +2060,42 @@ html.i18n-pending body {
 .form-privacy {
   font-size: 0.82rem;
   color: var(--ink-2);
+}
+
+/* ---------- Selector de tema: Sistema / Claro / Oscuro ---------- */
+.theme-group {
+  display: inline-flex;
+  height: 40px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.theme-group button {
+  width: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.theme-group button + button {
+  border-left: 1px solid var(--line);
+}
+
+.theme-group button:hover {
+  color: var(--ink);
+}
+
+.theme-group button[aria-pressed="true"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.theme-group button:focus-visible {
+  outline-offset: -3px;
 }

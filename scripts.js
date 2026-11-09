@@ -100,16 +100,27 @@
   }
 
   /* ----------------------------------------------------------------- tema */
+  // Tres opciones: Sistema (por defecto, sigue al dispositivo), Claro y Oscuro.
   function initTheme() {
-    const button = $("#theme-toggle");
-    if (!button) return;
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-    button.addEventListener("click", () => {
-      const current = root.dataset.theme || (prefersDark.matches ? "dark" : "light");
-      const next = current === "dark" ? "light" : "dark";
-      root.dataset.theme = next;
-      storage.set("theme", next);
-    });
+    const group = $("#theme-group");
+    if (!group) return;
+    const buttons = $$("[data-theme-choice]", group);
+    const stored = storage.get("theme");
+    let choice = stored === "light" || stored === "dark" ? stored : "system";
+
+    const apply = (value) => {
+      choice = value;
+      if (value === "system") {
+        root.removeAttribute("data-theme"); // sin atributo, manda prefers-color-scheme
+      } else {
+        root.dataset.theme = value;
+      }
+      storage.set("theme", value);
+      buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.themeChoice === value)));
+    };
+
+    buttons.forEach((button) => button.addEventListener("click", () => apply(button.dataset.themeChoice)));
+    apply(choice);
   }
 
   /* ----------------------------------------------------------------- menú */
